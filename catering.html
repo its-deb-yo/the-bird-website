@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="css2.css" rel="stylesheet">
 
 <!-- Google Analytics GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4L2MCNKGV0"></script>
@@ -173,7 +172,7 @@
     background: var(--paper-2);
     border: 1px solid rgba(27,24,18,0.08);
     border-radius: 8px;
-    padding: 2rem; /* Reduced size per request */
+    padding: 2rem; 
     box-shadow: 0 4px 20px rgba(0,0,0,0.04);
   }
   .form-row {
@@ -339,7 +338,9 @@
 
       <!-- Right Column: Contact Inquiry Form -->
       <div class="form-card" id="form-card">
-        <form id="catering-form" method="POST" name="catering" data-netlify="true" netlify>
+        <!-- Netlify Form Attributes included natively -->
+        <form id="catering-form" method="POST" name="catering" data-netlify="true">
+          <!-- Required hidden field for Netlify Forms -->
           <input type="hidden" name="form-name" value="catering">
           
           <div class="form-row">
@@ -511,6 +512,7 @@
     }
   })();
 
+  // AJAX Submission for Netlify Form
   (function() {
     const form = document.getElementById('catering-form');
     const formCard = document.getElementById('form-card');

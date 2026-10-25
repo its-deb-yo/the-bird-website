@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="css2.css" rel="stylesheet">
 
 <!-- Google Analytics GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4L2MCNKGV0"></script>
@@ -299,7 +298,9 @@
 
       <!-- Right Column: The Form -->
       <div class="form-container">
-        <form id="thanksgiving-form" onsubmit="event.preventDefault(); document.getElementById('reservation-form-area').style.display='none'; document.getElementById('success-msg').style.display='block'; window.scrollTo(0, document.querySelector('.order-section').offsetTop - 100);">
+        <!-- Added Netlify attributes and removed inline JS for a cleaner AJAX submission -->
+        <form id="thanksgiving-form" method="POST" name="thanksgiving-reservations" data-netlify="true">
+          <input type="hidden" name="form-name" value="thanksgiving-reservations">
           
           <div class="disclaimer-banner">
             <strong>Please Note:</strong> This is a reservation REQUEST only. Your booking is not finalized until you receive a direct confirmation from our team.
@@ -308,46 +309,47 @@
           <div class="form-row">
             <div class="form-group row-item">
               <label>First Name *</label>
-              <input type="text" required>
+              <!-- MUST add 'name' attribute for Netlify to see data -->
+              <input type="text" name="first-name" required>
             </div>
             <div class="form-group row-item">
               <label>Last Name *</label>
-              <input type="text" required>
+              <input type="text" name="last-name" required>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group row-item">
               <label>Email *</label>
-              <input type="email" required>
+              <input type="email" name="email" required>
             </div>
             <div class="form-group row-item">
               <label>Phone *</label>
-              <input type="tel" required>
+              <input type="tel" name="phone" required>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group row-item">
               <label>Event Date *</label>
-              <select id="pref-day" required>
+              <select id="pref-day" name="event-date" required>
                 <option value="">Select a date...</option>
-                <option value="tuesday">Tuesday, Nov 24</option>
-                <option value="wednesday">Wednesday, Nov 25</option>
-                <option value="thursday">Thursday, Nov 26</option>
-                <option value="saturday">Saturday, Nov 28</option>
-                <option value="sunday">Sunday, Nov 29</option>
+                <option value="Tuesday, Nov 24">Tuesday, Nov 24</option>
+                <option value="Wednesday, Nov 25">Wednesday, Nov 25</option>
+                <option value="Thursday, Nov 26">Thursday, Nov 26</option>
+                <option value="Saturday, Nov 28">Saturday, Nov 28</option>
+                <option value="Sunday, Nov 29">Sunday, Nov 29</option>
               </select>
             </div>
             <div class="form-group row-item">
               <label>Number of Guests *</label>
-              <input type="number" id="party-size" min="1" max="25" required placeholder="e.g. 4">
+              <input type="number" id="party-size" name="party-size" min="1" max="25" required placeholder="e.g. 4">
             </div>
           </div>
 
           <div class="form-group">
             <label>Preferred Time Slot *</label>
-            <select id="pref-time" required disabled>
+            <select id="pref-time" name="time-slot" required disabled>
               <option value="">Select an event date first...</option>
             </select>
           </div>
@@ -358,19 +360,19 @@
             <p style="font-size: 0.85rem; margin-bottom: 1.25rem; color: var(--ink-soft); line-height: 1.5;">For parties of 5 or more a credit card will be required at time of reservation.</p>
             
             <label class="checkbox-group">
-              <input type="checkbox" id="fee-consent">
+              <input type="checkbox" id="fee-consent" name="fee-consent" value="Agreed">
               <span>I understand that if my party cancels less than 48 hours in advance or if the party does not show up at the reservation time, a <strong>$15 per person cancellation fee</strong> will be charged on my credit card.</span>
             </label>
             
             <label class="checkbox-group">
-              <input type="checkbox" id="phone-consent">
+              <input type="checkbox" id="phone-consent" name="phone-consent" value="Agreed">
               <span><strong>PCI Compliance:</strong> I agree to be contacted by phone to provide secure payment details to finalize this request. (Do not enter card info here).</span>
             </label>
           </div>
 
           <div class="form-group">
             <label>Additional Information (Optional)</label>
-            <textarea rows="3" placeholder="Tell us about high chairs, or any other special requests..."></textarea>
+            <textarea name="additional-info" rows="3" placeholder="Tell us about high chairs, or any other special requests..."></textarea>
           </div>
 
           <button type="submit" class="btn-submit">Send Inquiry</button>
@@ -486,11 +488,11 @@
     
     // Holiday Hours Matrix updated for the whole week
     const times = {
-      'tuesday': ['4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM'],
-      'wednesday': ['4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM'],
-      'thursday': ['12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM'],
-      'saturday': ['12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM'],
-      'sunday': ['12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM']
+      'Tuesday, Nov 24': ['4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM'],
+      'Wednesday, Nov 25': ['4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM'],
+      'Thursday, Nov 26': ['12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM'],
+      'Saturday, Nov 28': ['12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM'],
+      'Sunday, Nov 29': ['12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM']
     };
 
     // 1. Dynamic Time Slot Population
@@ -535,6 +537,40 @@
       document.getElementById('reservation-form-area').style.display = 'none';
       document.getElementById('capacity-full-msg').style.display = 'block';
     }
+
+    // 4. Netlify Form AJAX Submission logic
+    const resForm = document.getElementById('thanksgiving-form');
+    if (resForm) {
+      resForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const submitBtn = resForm.querySelector('button[type="submit"]');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Sending Inquiry...';
+        }
+
+        const formData = new FormData(resForm);
+        
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData).toString()
+        })
+        .then(() => {
+          document.getElementById('reservation-form-area').style.display = 'none'; 
+          document.getElementById('success-msg').style.display = 'block'; 
+          window.scrollTo({ top: document.querySelector('.order-section').offsetTop - 100, behavior: 'smooth' });
+        })
+        .catch(() => {
+          alert("There was an error submitting your request. Please try calling us instead at (707) 542-0861.");
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Inquiry';
+          }
+        });
+      });
+    }
+
   });
 </script>
 </body>
