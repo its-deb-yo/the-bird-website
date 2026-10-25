@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Catering & Private Events — The Bird Restaurant</title>
+<link rel="icon" type="image/png" href="Bird_Logo_clknrs.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="css2.css" rel="stylesheet">
+
+<!-- Google Analytics GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4L2MCNKGV0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-4L2MCNKGV0');
+</script>
+
+<style>
+  :root {
+    --ink: #1B1812;
+    --ink-soft: #4B453C;
+    --paper: #F3EFE7;
+    --paper-2: #E7E0D2;
+    --wine: #6E2A38;
+    --wine-light: #893447;
+    --gold: #B99A4F;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  /* ACCESSIBILITY & LAYOUT FIX: No overflow-x: hidden to preserve sticky header */
+  html { scroll-behavior: smooth; }
+  body { max-width: 100vw; background: var(--paper); color: var(--ink); font-family: var(--body); line-height: 1.65; margin: 0; padding: 0; }
+
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  ::selection { background: var(--gold); color: var(--ink); }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 5vw; }
+
+  /* Nav Links Styling & Gold Underline Effect (Forced Black Text) */
+  .nav-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 1.15rem; 
+    font-size: 0.94rem; 
+    font-weight: 500; 
+    white-space: nowrap; 
+  }
+  .nav-links a {
+    position: relative;
+    padding-bottom: 4px;
+    color: var(--ink) !important;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--ink) !important;
+    font-weight: 600;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: var(--gold);
+    transition: width 0.25s ease-in-out;
+  }
+  .nav-links a:hover::after, 
+  .nav-links a.active::after {
+    width: 100%;
+  }
+
+  /* Accessible Buttons */
+  .btn {
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 0.5rem;
+    padding: 1rem 2.2rem;
+    min-width: 170px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.03em; 
+    border-radius: 4px; 
+    text-decoration: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: none;
+    transition: transform 0.18s, background 0.18s, color 0.18s, border-color 0.18s;
+  }
+  .btn-primary { 
+    background: var(--wine); 
+    color: var(--paper); 
+    border: 1.5px solid var(--wine); 
+  }
+  .btn-primary:hover { 
+    background: var(--wine-light); 
+    border-color: var(--wine-light); 
+    transform: translateY(-2px); 
+  }
+  .btn-gold { background: var(--gold); color: var(--ink); }
+  .btn-gold:hover { background: #cbae6c; transform: translateY(-2px); }
+
+  /* ---------- Catering Page Section ---------- */
+  .catering-section {
+    padding: 3rem 0 6.5rem;
+  }
+  .catering-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.12fr;
+    gap: 4.5rem;
+    align-items: flex-start;
+  }
+  .eyebrow {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--wine);
+    margin-bottom: 0.6rem;
+  }
+  .catering-text h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.3rem, 4.4vw, 3.2rem);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+    color: var(--ink);
+  }
+  .catering-text p {
+    color: var(--ink-soft);
+    font-size: 1.1rem;
+    line-height: 1.75;
+    margin-bottom: 1.8rem;
+  }
+  .catering-facts {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+  .catering-facts li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    font-size: 1.05rem;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  .catering-facts li::before {
+    content: "—";
+    color: var(--wine);
+    font-weight: 700;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    flex-shrink: 0;
+  }
+
+  /* Form Card Styling */
+  .form-card {
+    background: var(--paper-2);
+    border: 1px solid rgba(27,24,18,0.08);
+    border-radius: 8px;
+    padding: 2rem; /* Reduced size per request */
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+    margin-bottom: 1.1rem;
+  }
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.1rem;
+  }
+  .form-field.full {
+    grid-column: 1 / -1;
+  }
+  .form-field label {
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1.5px solid rgba(27,24,18,0.18);
+    background: #FFFFFF;
+    padding: 0.8rem 1rem;
+    font-family: var(--body);
+    font-size: 1.05rem;
+    border-radius: 4px;
+    color: var(--ink);
+    transition: border-color 0.2s, outline 0.2s;
+  }
+  .form-field select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2212%22%20height%3D%2212%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%234B453C%22%20stroke-width%3D%222.5%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1rem;
+    padding-right: 2.5rem;
+    cursor: pointer;
+  }
+  .form-field textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    outline: 2px solid var(--gold);
+    border-color: var(--gold);
+  }
+  .form-note {
+    font-size: 0.92rem;
+    color: var(--ink-soft);
+    margin-top: 1.1rem;
+    text-align: center;
+    line-height: 1.6;
+  }
+  .form-note a {
+    color: var(--wine);
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 890px) {
+    .catering-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+  }
+  @media (max-width: 540px) {
+    .form-row {
+      grid-template-columns: 1fr;
+      gap: 0;
+    }
+    .catering-section {
+      padding: 2.5rem 0 4.5rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- 1. STATUS BAR -->
+<div class="status-bar" style="background-color: #6B2D3E; color: #FFFFFF; font-size: 0.85rem; width: 100%; box-sizing: border-box;">
+  <div style="max-width: 1340px; margin: 0 auto; padding: 0.5rem 2rem; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
+    <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;">
+      <span id="status-dot" style="width: 8px; height: 8px; background-color: #7FBF7F; border-radius: 50%; display: inline-block;"></span>
+      <span id="status-text">Checking hours…</span>
+    </div>
+    <div>
+      <a href="https://www.google.com/maps/search/?api=1&query=4776+Sonoma+Hwy,+Santa+Rosa,+CA+95409" target="_blank" rel="noopener noreferrer" style="color: #FFFFFF; text-decoration: none;">4776 Sonoma Hwy, Santa Rosa, CA 95409</a> 
+      &nbsp;·&nbsp; 
+      <a href="tel:+17075420861" style="color: #FFFFFF; text-decoration: none; white-space: nowrap;">(707) 542-0861</a>
+    </div>
+  </div>
+</div>
+
+<!-- 2. STICKY NAV BAR -->
+<header class="site-header" style="position: sticky; top: 0; z-index: 1000; background-color: #F3EFE7; border-bottom: 1px solid rgba(27,24,18,0.08); box-shadow: 0 2px 10px rgba(0,0,0,0.03); width: 100%;">
+  <div style="max-width: 1340px; margin: 0 auto; padding: 1.1rem 2rem; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box;">
+    
+    <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none; flex-shrink: 0;">
+      <img loading="lazy" src="Bird_Logo_clknrs.png" alt="The Bird Logo" style="height: 38px; width: auto; border-radius: 50%; display: block;">
+      <span style="font-family: var(--display); font-weight: 700; font-size: 1.25rem; color: #1B1812; letter-spacing: -0.01em;">The Bird</span>
+    </a>
+
+    <nav class="nav-links" style="margin-left: 2.5rem; margin-right: 2rem;">
+      <a href="menu.html">Menu</a>
+      <a href="happyhour.html">Happy Hour</a>
+      <a href="thanksgiving-takeout.html">Thanksgiving Takeout</a>
+      <a href="thanksgiving-reservations.html">Thanksgiving Reservations</a>
+      <a href="catering.html" class="active">Catering</a>
+      <a href="livemusic.html">Live Music</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="location.html">Location</a>
+      <a href="about.html">About</a>
+    </nav>
+
+    <div style="flex-shrink: 0;">
+      <a href="https://order.spoton.com/so-the-bird-4685/santa-rosa-ca/60ccbc7724b4c4514ff4c87b" target="_blank" rel="noopener noreferrer" style="display: inline-block; background-color: #6B2D3E; color: #FFFFFF; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 0.88rem; padding: 0.65rem 1.25rem; border-radius: 4px; text-decoration: none; letter-spacing: 0.02em;">Order Now</a>
+    </div>
+
+  </div>
+</header>
+
+<!-- MAIN CATERING SECTION -->
+<main class="catering-section">
+  <div class="wrap">
+    
+    <!-- Prominent Featured Image (Oysters) -->
+    <div style="margin-bottom: 3.5rem;">
+      <img src="oysters.jpg" alt="Fresh Oysters on the grill" loading="lazy" width="1180" height="500" style="width: 100%; height: 420px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.06);">
+    </div>
+
+    <div class="catering-grid">
+      
+      <!-- Left Column: Copy & Highlights -->
+      <div class="catering-text">
+        <div class="eyebrow">Private Events</div>
+        <h1>Let Us Host Your Next Event</h1>
+        <p>We'll customize a menu from our current offerings or build something specific to your occasion. Tell us what you're planning and we'll follow up with the details and a quote.</p>
+        
+        <ul class="catering-facts">
+          <li>Delivery to your event, or pickup at the restaurant</li>
+          <li>Banquet room on-site, seats up to 50 guests</li>
+          <li>Outdoor patio available, seats up to 40 guests</li>
+        </ul>
+
+        <!-- Secondary Image (Catering Event) -->
+        <div style="margin-top: 3rem;">
+          <img src="catering_event.jpg" alt="The Bird Catering Team" loading="lazy" width="800" height="600" style="width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+        </div>
+      </div>
+
+      <!-- Right Column: Contact Inquiry Form -->
+      <div class="form-card" id="form-card">
+        <form id="catering-form" method="POST" name="catering" data-netlify="true" netlify>
+          <input type="hidden" name="form-name" value="catering">
+          
+          <div class="form-row">
+            <div class="form-field">
+              <label for="fname">First Name *</label>
+              <input id="fname" name="fname" type="text" required autocomplete="given-name">
+            </div>
+            <div class="form-field">
+              <label for="lname">Last Name *</label>
+              <input id="lname" name="lname" type="text" required autocomplete="family-name">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-field">
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" required autocomplete="email">
+            </div>
+            <div class="form-field">
+              <label for="phone">Phone *</label>
+              <input id="phone" name="phone" type="tel" required autocomplete="tel">
+            </div>
+          </div>
+          
+          <div class="form-row">
+            <div class="form-field">
+              <label for="edate">Event Date *</label>
+              <input id="edate" name="edate" type="date" required>
+            </div>
+            <div class="form-field">
+              <label for="guests">Number of Guests *</label>
+              <input id="guests" name="guests" type="number" min="1" required placeholder="e.g. 35">
+            </div>
+          </div>
+          
+          <div class="form-field full">
+            <label for="type">Type *</label>
+            <select id="type" name="type" required>
+              <option value="" disabled selected>Select event type…</option>
+              <option value="Delivery to your event">Delivery to your event</option>
+              <option value="Pickup at restaurant">Pickup at restaurant</option>
+              <option value="Host event at restaurant (banquet room / patio)">Host event at restaurant (banquet room / patio)</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          
+          <!-- Optional Additional Information Box -->
+          <div class="form-field full">
+            <label for="info">Additional Information (Optional)</label>
+            <textarea id="info" name="info" rows="3" placeholder="Tell us about food preferences, timing, or any special requests…"></textarea>
+          </div>
+          
+          <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            Send Inquiry
+          </button>
+
+          <p class="form-note">
+            We'll be in touch soon! Or call us directly at <a href="tel:+17075420861" style="white-space: nowrap; color: var(--wine); font-weight: 700;">(707) 542-0861</a>.
+          </p>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<!-- ACCESSIBLE MASTER FOOTER -->
+<footer class="site-footer" style="background: #1B1812; border-top: none; position: relative; color: #C7C0AF; padding: 2.5rem 0 1.5rem 0; width: 100%; box-sizing: border-box; text-align: left;">
+  <div class="wrap" style="max-width: 1180px; margin: 0 auto; padding: 0 4vw;">
+    
+    <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2.2rem; border-bottom: 1px solid rgba(243,239,231,0.12);">
+      
+      <!-- Column 1 -->
+      <div>
+        <a href="index.html" style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; text-decoration: none;">
+          <img loading="lazy" src="Bird_Logo_clknrs.png" alt="The Bird Logo" style="height: 38px; width: auto; border-radius: 50%;">
+          <span style="font-family: var(--display); font-weight: 700; font-size: 1.25rem; color: #F3EFE7;">The Bird</span>
+        </a>
+        
+        <div style="margin-bottom: 0.6rem; font-size: 1.05rem; font-weight: 600; color: #C7C0AF;">
+          Great Food · Full Bar · Live Entertainment
+        </div>
+        <p style="font-size: 0.95rem; color: #A8A090; line-height: 1.6; max-width: 280px; margin: 0;">
+          Where Sonoma County comes together to eat, drink, and enjoy great music.
+        </p>
+      </div>
+
+      <!-- Column 2 -->
+      <div>
+        <h4 style="font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--gold); margin-bottom: 1.1rem; letter-spacing: 0.03em;">Explore</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.85rem; font-size: 1rem;">
+          <li><a href="menu.html" style="color: #C7C0AF; text-decoration: none;">Menu</a></li>
+          <li><a href="happyhour.html" style="color: #C7C0AF; text-decoration: none;">Happy Hour</a></li>
+          <li><a href="livemusic.html" style="color: #C7C0AF; text-decoration: none;">Live Music</a></li>
+          <li><a href="catering.html" style="color: #C7C0AF; text-decoration: none;">Catering</a></li>
+          <li><a href="gallery.html" style="color: #C7C0AF; text-decoration: none;">Gallery</a></li>
+          <li><a href="reviews.html" style="color: #C7C0AF; text-decoration: none;">Reviews</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3 -->
+      <div>
+        <h4 style="font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--gold); margin-bottom: 1.1rem; letter-spacing: 0.03em;">Visit</h4>
+        <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 1rem; color: #C7C0AF;">
+          <a href="https://www.google.com/maps/search/?api=1&query=4776+Sonoma+Hwy,+Santa+Rosa,+CA+95409" target="_blank" rel="noopener" style="color: #C7C0AF; text-decoration: none;">4776 Sonoma Hwy</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=4776+Sonoma+Hwy,+Santa+Rosa,+CA+95409" target="_blank" rel="noopener" style="color: #C7C0AF; text-decoration: none;">Santa Rosa, CA 95409</a>
+          <a href="tel:+17075420861" style="color: #C7C0AF; text-decoration: none; margin-top: 0.2rem;">(707) 542-0861</a>
+        </div>
+      </div>
+
+      <!-- Column 4 -->
+      <div>
+        <h4 style="font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--gold); margin-bottom: 1.1rem; letter-spacing: 0.03em;">Follow Us</h4>
+        
+        <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+          <a href="https://www.instagram.com/thebirdrestaurant707/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(243,239,231,0.25); color: #F3EFE7; text-decoration: none;">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/thebirdrestaurant707/" target="_blank" rel="noopener noreferrer" style="color: #C7C0AF; text-decoration: none; font-size: 1rem;">Instagram</a>
+        </div>
+        
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+          <a href="https://www.facebook.com/thebird707" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(243,239,231,0.25); color: #F3EFE7; text-decoration: none;">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/thebird707" target="_blank" rel="noopener noreferrer" style="color: #C7C0AF; text-decoration: none; font-size: 1rem;">Facebook</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; padding: 1.4rem 0 1.0rem 0; font-size: 0.85rem; color: #7A7265;">
+      <span>&copy; 2026 The Bird Restaurant. All rights reserved.</span>
+      <span>Santa Rosa, California · Since 1980</span>
+    </div>
+
+    <div style="text-align: center; margin-top: 1.5rem; padding-bottom: 0.5rem;">
+     <a href="https://castroascend.netlify.app/" target="_blank" rel="noopener noreferrer" style="color: #9A9285; font-size: 0.68rem; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem;">
+        Designed by AC
+        <span style="display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; background: #DCDCDC; border-radius: 3px; margin-left: 0.1rem;">
+          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#3B62A0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </span>
+      </a>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+  (function() {
+    const dot = document.getElementById('status-dot');
+    const text = document.getElementById('status-text');
+    const now = new Date();
+    const day = now.getDay(); 
+    const hour = now.getHours() + now.getMinutes() / 60;
+    const hoursMap = {
+      0: [12, 19], 
+      1: null,     
+      2: [12, 21], 3: [12, 21], 4: [12, 21], 5: [12, 21],
+      6: [12, 21]
+    };
+    const todays = hoursMap[day];
+    const isOpen = todays && hour >= todays[0] && hour < todays[1];
+    if (isOpen) {
+      text.textContent = 'Open Now';
+    } else {
+      dot.style.backgroundColor = '#C97A6B';
+      text.textContent = 'Closed Now';
+    }
+  })();
+
+  (function() {
+    const form = document.getElementById('catering-form');
+    const formCard = document.getElementById('form-card');
+    
+    if (form && formCard) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const submitBtn = form.querySelector('button[type="submit"]');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Sending Inquiry…';
+        }
+
+        const formData = new FormData(form);
+        
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(formData).toString()
+        })
+        .then(() => {
+          formCard.innerHTML = `
+            <div style="text-align: center; padding: 3.5rem 1.5rem; animation: fadeIn 0.4s ease-out;">
+              <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(110,42,56,0.1); border: 2px solid var(--wine); display: inline-flex; align-items: center; justify-content: center; font-size: 2rem; margin-bottom: 1.4rem; color: var(--wine);">✓</div>
+              <h2 style="font-family: var(--display); font-size: clamp(1.8rem, 3.5vw, 2.2rem); color: var(--ink); margin-bottom: 1rem;">Thank you!</h2>
+              <p style="font-size: 1.15rem; color: var(--ink-soft); line-height: 1.7; max-width: 480px; margin: 0 auto;">We received your catering inquiry and will get back to you within 48-72 hours.</p>
+              <div style="margin-top: 2.2rem; padding-top: 1.5rem; border-top: 1px solid rgba(27,24,18,0.08); font-size: 0.95rem; color: var(--ink-soft);">
+                Need to reach us right away? Call us at <a href="tel:+17075420861" style="color: var(--wine); font-weight: 700; text-decoration: underline;">(707) 542-0861</a>.
+              </div>
+            </div>
+          `;
+          formCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        })
+        .catch(() => {
+          alert("Thank you! We received your catering inquiry and will get back to you within 48-72 hours.");
+          form.reset();
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Send Inquiry';
+          }
+        });
+      });
+    }
+  })();
+</script>
+
+</body>
+</html>

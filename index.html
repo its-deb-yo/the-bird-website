@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>The Bird Restaurant — Santa Rosa, CA</title>
+    <!-- Google Analytics GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4L2MCNKGV0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4L2MCNKGV0');
+</script>
+<link rel="icon" type="image/png" href="Bird_Logo_clknrs.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="css2.css" rel="stylesheet">    
+
+<style>
+  :root {
+    --ink: #1B1812;
+    --ink-soft: #4B453C;
+    --paper: #F3EFE7;
+    --paper-2: #E7E0D2;
+    --wine: #6E2A38;
+    --wine-light: #893447;
+    --gold: #B99A4F;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { 
+    background: var(--paper); 
+    color: var(--ink); 
+    font-family: var(--body); 
+    line-height: 1.65; 
+    margin: 0; 
+    padding: 0; 
+  }
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  ::selection { background: var(--gold); color: var(--ink); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 5vw; }
+  
+  /* Nav Links Styling & Gold Underline Effect */
+  .nav-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 1.15rem; 
+    font-size: 0.94rem; 
+    font-weight: 500; 
+    white-space: nowrap; 
+  }
+  .nav-links a {
+    position: relative;
+    padding-bottom: 4px;
+    color: var(--ink) !important;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--ink) !important;
+    font-weight: 600;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: var(--gold);
+    transition: width 0.25s ease-in-out;
+  }
+  .nav-links a:hover::after, 
+  .nav-links a.active::after {
+    width: 100%;
+  }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.85rem 1.6rem; font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.03em; border-radius: 3px;
+    transition: transform 0.18s, background 0.18s, color 0.18s, border-color 0.18s;
+  }
+  button.btn { border: none; outline: none; -webkit-appearance: none; appearance: none; cursor: pointer; font-family: inherit; font-size: inherit; line-height: 1; }
+  .btn-primary { background: var(--wine); color: var(--paper); }
+  .btn-primary:hover { background: var(--wine-light); transform: translateY(-2px); }
+  .btn-gold { background: var(--gold); color: var(--ink); }
+  .btn-gold:hover { background: #cbae6c; transform: translateY(-2px); }
+  .btn-outline { border: 1.5px solid rgba(243,239,231,0.5); color: var(--paper); }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+  .btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  /* ---------- hero ---------- */
+  .hero { background: var(--ink); color: var(--paper); }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    align-items: center;
+    min-height: calc(100vh - 110px);
+    gap: 3rem;
+  }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 1.6rem;
+    opacity: 0; animation: rise 0.8s ease-out 0.1s forwards;
+  }
+  .hero-eyebrow::before { content: ""; width: 26px; height: 1px; background: var(--gold); }
+  .hero h1 {
+    font-family: var(--display); font-weight: 700;
+    font-size: clamp(3rem, 6.4vw, 5.2rem); line-height: 1.02; letter-spacing: -0.01em;
+    opacity: 0; animation: rise 0.9s ease-out 0.22s forwards;
+  }
+  .hero p {
+    margin-top: 1.5rem; font-size: 1.08rem; max-width: 460px; color: #CFC8B9;
+    opacity: 0; animation: rise 0.9s ease-out 0.36s forwards;
+  }
+  .hero-ctas {
+    margin-top: 2.2rem; display: flex; gap: 1rem; flex-wrap: wrap;
+    opacity: 0; animation: rise 0.9s ease-out 0.5s forwards;
+  }
+  @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+
+  .hero-media { position: relative; height: 84vh; }
+  .hero-media img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-media::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(115deg, rgba(110,42,56,0.35), rgba(27,24,18,0.05) 60%);
+  }
+  @media (max-width: 920px) {
+    .hero-grid { grid-template-columns: 1fr; min-height: auto; }
+    .hero-grid .hero-text { padding: 4rem 0 2rem; }
+    .hero-media { height: 50vh; }
+  }
+
+  /* ---------- Holiday Modal ---------- */
+  .modal-overlay {
+    position: fixed; inset: 0; z-index: 3000;
+    background: rgba(27, 24, 18, 0.85);
+    display: none; align-items: center; justify-content: center;
+    padding: 2vw;
+    opacity: 0; transition: opacity 0.4s ease;
+  }
+  .modal-overlay.active { display: flex; opacity: 1; }
+  
+  .modal-card {
+    background: var(--paper); color: var(--ink);
+    display: flex; width: 100%; max-width: 960px;
+    border-radius: 8px; overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    position: relative;
+    transform: translateY(20px); transition: transform 0.4s ease;
+  }
+  .modal-overlay.active .modal-card { transform: translateY(0); }
+
+  .modal-image { width: 50%; position: relative; background: var(--ink); display: flex; align-items: center; justify-content: center; }
+  .modal-image img { width: 100%; height: 100%; object-fit: contain; }
+  
+  .modal-content {
+    width: 50%; padding: 4rem 3rem;
+    display: flex; flex-direction: column; justify-content: center;
+  }
+  .modal-content h2 {
+    font-size: 2.6rem; font-weight: 700;
+    color: var(--wine); margin-bottom: 1.2rem; line-height: 1.1;
+  }
+  .modal-content p {
+    font-size: 1.25rem; line-height: 1.6; color: var(--ink); font-weight: 500; margin-bottom: 2.5rem;
+  }
+  
+  .modal-btn {
+    background: var(--wine); color: var(--paper);
+    padding: 1.2rem 2.5rem; font-size: 1.25rem; font-weight: 700;
+    border: none; border-radius: 4px; cursor: pointer;
+    text-align: center; width: fit-content; text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    display: inline-block;
+    white-space: nowrap;
+  }
+  .modal-btn:hover { background: var(--wine-light); transform: translateY(-2px); color: var(--paper); }
+
+  .modal-close {
+    position: absolute; top: 1rem; right: 1rem;
+    background: rgba(243, 239, 231, 0.9); border: none;
+    font-size: 2.8rem; font-weight: 700; border-radius: 50%;
+    color: var(--wine); cursor: pointer; line-height: 1;
+    z-index: 10; width: 60px; height: 60px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+  }
+  .modal-close:hover { background: var(--wine); color: var(--paper); transform: scale(1.05); }
+
+  @media (max-width: 768px) {
+    .modal-card { flex-direction: column; max-height: 90vh; overflow-y: auto; }
+    .modal-image { width: 100%; height: 300px; }
+    .modal-content { width: 100%; padding: 2.5rem 1.5rem; }
+    .modal-content h2 { font-size: 2.2rem; }
+    .modal-content p { font-size: 1.15rem; }
+    .modal-close { top: 0.5rem; right: 0.5rem; width: 50px; height: 50px; font-size: 2.4rem; background: rgba(243, 239, 231, 0.95); }
+  }
+</style>
+</head>
+<body>
+
+<!-- 1. STATUS BAR (Scrolls away naturally) -->
+<div class="status-bar" style="background-color: #6B2D3E; color: #FFFFFF; font-size: 0.85rem; width: 100%; box-sizing: border-box;">
+  <div style="max-width: 1340px; margin: 0 auto; padding: 0.5rem 2rem; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
+    <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;">
+      <span id="status-dot" style="width: 8px; height: 8px; background-color: #7FBF7F; border-radius: 50%; display: inline-block;"></span>
+      <span id="status-text">Checking hours…</span>
+    </div>
+    <div>
+      <a href="https://www.google.com/maps/search/?api=1&query=4776+Sonoma+Hwy,+Santa+Rosa,+CA+95409" target="_blank" rel="noopener noreferrer" style="color: #FFFFFF; text-decoration: none;">4776 Sonoma Hwy, Santa Rosa, CA 95409</a> 
+      &nbsp;·&nbsp; 
+      <a href="tel:+17075420861" style="color: #FFFFFF; text-decoration: none; white-space: nowrap;">(707) 542-0861</a>
+    </div>
+  </div>
+</div>
+
+<!-- 2. STICKY NAV BAR (Pins to top when scrolled) -->
+<header class="site-header" style="position: sticky; top: 0; z-index: 1000; background-color: #F3EFE7; border-bottom: 1px solid rgba(27,24,18,0.08); box-shadow: 0 2px 10px rgba(0,0,0,0.03); width: 100%;">
+  <div style="max-width: 1340px; margin: 0 auto; padding: 1.1rem 2rem; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box;">
+    
+    <!-- Left: Brand -->
+    <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none; flex-shrink: 0;">
+       <!-- Logo: Image -->
+     <img loading="lazy" src="Bird_Logo_clknrs.png" alt="The Bird Logo" style="height: 38px; width: auto; border-radius: 50%;">
+      <span style="font-family: var(--display); font-weight: 700; font-size: 1.25rem; color: #1B1812; letter-spacing: -0.01em;">The Bird</span>
+    </a>
+
+    <!-- Center: Navigation Links -->
+    <nav class="nav-links" style="margin-left: 2.5rem; margin-right: 2rem;">
+      <a href="menu.html">Menu</a>
+      <a href="happyhour.html">Happy Hour</a>
+      <a href="thanksgiving-takeout.html">Thanksgiving Takeout</a>
+      <a href="thanksgiving-reservations.html">Thanksgiving Reservations</a>
+      <a href="catering.html">Catering</a>
+      <a href="livemusic.html">Live Music</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="location.html">Location</a>
+      <a href="about.html">About</a>
+    </nav>
+
+    <!-- Right: Order Now Button -->
+    <div style="flex-shrink: 0;">
+      <a href="https://order.spoton.com/so-the-bird-4685/santa-rosa-ca/60ccbc7724b4c4514ff4c87b" target="_blank" rel="noopener noreferrer" style="display: inline-block; background-color: #6B2D3E; color: #FFFFFF; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 0.88rem; padding: 0.65rem 1.25rem; border-radius: 4px; text-decoration: none; letter-spacing: 0.02em;">Order Now</a>
+    </div>
+
+  </div>
+</header>
+
+<!-- HERO SECTION -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="wrap hero-text" style="padding: 0;">
+      <div style="padding-left: 0;">
+        <div class="hero-eyebrow">Santa Rosa, California · Est. 1980</div>
+        <h1>Great food.<br>Full bar.<br>Live music.</h1>
+        <p>The Bird is Sonoma County's neighborhood gathering place — comfort food, a serious drink list, and a backyard stage that comes alive every summer.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-gold" href="menu.html">View Menu</a>
+          <a class="btn btn-outline" href="https://www.google.com/maps/place/The+Bird/@38.4630302,-122.6691425,17z/data=!3m1!4b1!4m5!3m4!1s0x80844702425b5b27:0x2a1d09e8e4159201!8m2!3d38.4630728!4d-122.6669711" target="_blank" rel="noopener">Get Directions</a>
+        </div>
+      </div>
+    </div>
+    <div class="hero-media">
+      <!-- BULLETPROOF IMAGE FIX: Using absolute Cloudinary URL -->
+      <img loading="lazy" src="https://res.cloudinary.com/j38l39ro/image/upload/f_auto,q_auto,w_1200/v1783565765/Main_Page_Photo_xtecfj.jpg" alt="Inside The Bird Restaurant" width="1200" height="800" style="width: 100%; height: 100%; object-fit: cover;">
+    </div>
+  </div>
+</section>
+
+<!-- SPLIT MARKER --><!-- ACCESSIBLE MASTER FOOTER (Optimized for 55+) -->
+<footer class="site-footer" style="background: #1B1812; border-top: none; position: relative; color: #C7C0AF; padding: 2.5rem 0 1.5rem 0; width: 100%; box-sizing: border-box; text-align: left;">
+  <div style="position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(185, 154, 79, 0.5), transparent);"></div>
+  <div class="wrap" style="max-width: 1180px; margin: 0 auto; padding: 0 4vw;">
+    
+    <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2.2rem; border-bottom: 1px solid rgba(243,239,231,0.12);">
+      
+      <!-- Column 1 -->
+      <div>
+        <!-- ADDED LINK TO INDEX.HTML HERE -->
+        <a href="index.html" style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; text-decoration: none;">
+          <!-- LOGO FIX -->
+          <img loading="lazy" src="Bird_Logo_clknrs.png" alt="The Bird Logo" style="height: 38px; width: auto; border-radius: 50%;">
+
+          <span style="font-family: var(--display); font-weight: 700; font-size: 1.25rem; color: #F3EFE7;">The Bird</span>
+        </a>
+        
+        <!-- TYPOGRAPHY FIX: Split into two distinct blocks so it doesn't look like a run-on sentence -->
+        <div style="margin-bottom: 0.6rem; font-size: 1.05rem; font-weight: 600; color: #C7C0AF;">
+          Great Food · Full Bar · Live Entertainment
+        </div>
+        <p style="font-size: 0.95rem; color: #A8A090; line-height: 1.6; max-width: 280px; margin: 0;">
+          Where Sonoma County comes together to eat, drink, and enjoy great music.
+        </p>
+      </div>
+
+      <!-- Column 2 -->
+      <div>
+        <h4 style="font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--gold); margin-bottom: 1.1rem; letter-spacing: 0.03em;">Explore</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.85rem; font-size: 1rem;">
+          <li><a href="menu.html" style="color: #C7C0AF; text-decoration: none;">Menu</a></li>
+          <li><a href="happyhour.html" style="color: #C7C0AF; text-decoration: none;">Happy Hour</a></li>
+          <li><a href="livemusic.html" style="color: #C7C0AF; text-decoration: none;">Live Music</a></li>
+          <li><a href="catering.html" style="color: #C7C0AF; text-decoration: none;">Catering</a></li>
+          <li><a href="gallery.html" style="color: #C7C0AF; text-decoration: none;">Gallery</a></li>
+          <li><a href="reviews.html" style="color: #C7C0AF; text-decoration: none;">Reviews</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3 -->
+      <div>
+        <h4 style="font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--gold); margin-bottom: 1.1rem; letter-spacing: 0.03em;">Visit</h4>
+        <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 1rem; color: #C7C0AF;">
+          <a href="https://www.google.com/maps/search/?api=1&query=4776+Sonoma+Hwy,+Santa+Rosa,+CA+95409" target="_blank" rel="noopener" style="color: #C7C0AF; text-decoration: none;">4776 Sonoma Hwy</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=4776+Sonoma+Hwy,+Santa+Rosa,+CA+95409" target="_blank" rel="noopener" style="color: #C7C0AF; text-decoration: none;">Santa Rosa, CA 95409</a>
+          <a href="tel:+17075420861" style="color: #C7C0AF; text-decoration: none; margin-top: 0.2rem;">(707) 542-0861</a>
+        </div>
+      </div>
+
+      <!-- Column 4 -->
+      <div>
+        <h4 style="font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--gold); margin-bottom: 1.1rem; letter-spacing: 0.03em;">Follow Us</h4>
+        
+        <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+          <a href="https://www.instagram.com/thebirdrestaurant707/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(243,239,231,0.25); color: #F3EFE7; text-decoration: none;">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/thebirdrestaurant707/" target="_blank" rel="noopener noreferrer" style="color: #C7C0AF; text-decoration: none; font-size: 1rem;">Instagram</a>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+          <a href="https://www.facebook.com/thebird707" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(243,239,231,0.25); color: #F3EFE7; text-decoration: none;">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/thebird707" target="_blank" rel="noopener noreferrer" style="color: #C7C0AF; text-decoration: none; font-size: 1rem;">Facebook</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; padding: 1.4rem 0 1.0rem 0; font-size: 0.85rem; color: #7A7265;">
+      <span>&copy; 2026 The Bird Restaurant. All rights reserved.</span>
+      <span>Santa Rosa, California · Since 1980</span>
+    </div>
+
+    <!-- Below the Fold Credit Link -->
+    <div style="text-align: center; margin-top: 1.5rem; padding-bottom: 0.5rem;">
+     <a href="https://castroascend.netlify.app/" target="_blank" rel="noopener noreferrer" style="color: #9A9285; font-size: 0.68rem; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem;">
+        Designed by AC
+        <span style="display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; background: #DCDCDC; border-radius: 3px; margin-left: 0.1rem;">
+          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#3B62A0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </span>
+      </a>
+    </div>
+
+  </div>
+</footer>
+
+<!-- HOLIDAY MODAL -->
+<div class="modal-overlay" id="holidayModal">
+  <div class="modal-card">
+    <button class="modal-close" id="closeModalBtn" aria-label="Close modal">&times;</button>
+    
+    <div class="modal-image">
+      <img src="holiday_party.jpg" alt="Holiday Event at The Bird" loading="lazy">
+    </div>
+    
+    <div class="modal-content">
+      <h2>Celebrate the Holidays<br>at The Bird</h2>
+      <p>Host your festive gathering where rustic character meets seasonal warmth. Our expansive downstairs room features exposed brick, holiday lights, and a real, fresh-cut Christmas tree, opening up directly to an enclosed patio for a beautiful indoor-outdoor flow. It is the perfect flexible setting for company holiday parties and lively family reunions. Dates for the season are filling fast.</p>
+      
+      <!-- CTA Updated to Click-to-Call -->
+      <a href="tel:707-542-0861" class="modal-btn" style="align-self: center; color: #FFFFFF; font-weight: 500;">Call <span style="font-weight: 800;">(707) 542-0861</span> to Book</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // Open Now status logic based on business hours
+  (function() {
+    const dot = document.getElementById('status-dot');
+    const text = document.getElementById('status-text');
+    const now = new Date();
+    const day = now.getDay(); // 0 = Sunday
+    const hour = now.getHours() + now.getMinutes() / 60;
+    const hoursMap = {
+      0: [12, 19], // Sunday
+      1: null,     // Monday closed
+      2: [12, 21], 3: [12, 21], 4: [12, 21], 5: [12, 21],
+      6: [12, 21]
+    };
+    const todays = hoursMap[day];
+    const isOpen = todays && hour >= todays[0] && hour < todays[1];
+    if (isOpen) {
+      text.textContent = 'Open Now';
+    } else {
+      dot.style.backgroundColor = '#C97A6B';
+      text.textContent = 'Closed Now';
+    }
+  })();
+
+  // Holiday Modal Logic
+  document.addEventListener("DOMContentLoaded", function() {
+    const modal = document.getElementById('holidayModal');
+    const closeBtn = document.getElementById('closeModalBtn');
+    
+    // Cookie Helper Functions
+    function setCookie(name, value, days) {
+      let expires = "";
+      if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toUTCString();
+      }
+      document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+    }
+
+    function getCookie(name) {
+      const nameEQ = name + "=";
+      const ca = document.cookie.split(';');
+      for(let i=0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+      }
+      return null;
+    }
+
+    // Check if modal has been dismissed in the last 7 days
+    const modalDismissed = getCookie("holidayModalDismissed");
+    
+    if (!modalDismissed) {
+      // 5-second delay before showing
+      setTimeout(() => {
+        modal.classList.add('active');
+      }, 5000);
+    }
+
+    // Close Modal and set 7-day cookie
+    function closeModal() {
+      modal.classList.remove('active');
+      setCookie("holidayModalDismissed", "true", 7);
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    
+    // Close on background click
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        closeModal();
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
