@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Menu — The Bird Restaurant</title>
+<link rel="icon" type="image/png" href="Bird_Logo_clknrs.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="css2.css" rel="stylesheet">
+
+<!-- Google Analytics GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4L2MCNKGV0"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-4L2MCNKGV0');
+</script>
+
+<style>
+  :root {
+    --ink: #1B1812;
+    --ink-soft: #4B453C;
+    --paper: #F3EFE7;
+    --paper-2: #E7E0D2;
+    --wine: #6E2A38;
+    --wine-light: #893447;
+    --gold: #B99A4F;
+    --display: 'Space Grotesk', sans-serif;
+    --body: 'Inter', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { max-width: 100vw; background: var(--paper); color: var(--ink); font-family: var(--body); line-height: 1.65; margin: 0; padding: 0; }
+
+  a { color: inherit; text-decoration: none; }
+  img { display: block; max-width: 100%; }
+  ::selection { background: var(--gold); color: var(--ink); }
+
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 5vw; }
+
+  .nav-links { 
+    display: flex; 
+    align-items: center; 
+    gap: 1.15rem; 
+    font-size: 0.94rem; 
+    font-weight: 500; 
+    white-space: nowrap; 
+  }
+  .nav-links a {
+    position: relative;
+    padding-bottom: 4px;
+    color: var(--ink) !important;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  .nav-links a:hover,
+  .nav-links a.active {
+    color: var(--ink) !important;
+    font-weight: 600;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 0;
+    height: 2px;
+    background-color: var(--gold);
+    transition: width 0.25s ease-in-out;
+  }
+  .nav-links a:hover::after, 
+  .nav-links a.active::after {
+    width: 100%;
+  }
+
+  .btn {
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 0.5rem;
+    padding: 1rem 2.2rem;
+    min-width: 170px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.03em; 
+    border-radius: 4px; 
+    text-decoration: none;
+    box-sizing: border-box;
+    transition: transform 0.18s, background 0.18s, color 0.18s, border-color 0.18s;
+  }
+  .btn-gold { background: var(--gold); color: var(--ink); }
+  .btn-gold:hover { background: #cbae6c; transform: translateY(-2px); }
+  .btn-outline { border: 1.5px solid rgba(243,239,231,0.5); color: var(--paper); }
+  .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+
+  .sub-nav {
+    position: sticky;
+    top: 76px;
+    background: var(--paper-2);
+    border-bottom: 1px solid rgba(27,24,18,0.1);
+    z-index: 999;
+    padding: 0.75rem 0;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+  .sub-nav .wrap {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .sub-nav a {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+    padding: 0.5rem 0;
+    transition: color 0.2s;
+  }
+  .sub-nav a:hover, .sub-nav a.active-sub {
+    color: var(--wine);
+  }
+  @media (max-width: 768px) {
+    .sub-nav .wrap { justify-content: flex-start; padding-left: 1rem; padding-right: 1rem; }
+  }
+
+  .menu-hero { padding: 4rem 0 2rem; text-align: center; }
+  .eyebrow { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--wine); margin-bottom: 0.6rem; }
+  .menu-hero h1 { 
+    font-family: var(--display); 
+    font-weight: 700; 
+    font-size: clamp(1.85rem, 3.8vw, 2.75rem); 
+    line-height: 1.15; 
+    letter-spacing: -0.01em; 
+    margin-bottom: 0.8rem; 
+  }
+  @media (min-width: 920px) {
+    .menu-hero h1 { white-space: nowrap; }
+  }
+  .menu-hero p { color: var(--ink-soft); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+
+  .menu-section { padding: 5rem 0 3.4rem; border-bottom: 1px solid rgba(27,24,18,0.08); margin-top: -3.5rem; }
+  .menu-section:last-of-type { border-bottom: none; }
+  .menu-section-head { margin-bottom: 2rem; }
+  .menu-section-head h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.8rem, 3vw, 2.4rem); color: var(--ink); }
+  .menu-section-head .sub { color: var(--ink-soft); font-size: 1.05rem; margin-top: 0.3rem; }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  @media (min-width: 920px) {
+    .menu-grid { grid-template-columns: 1fr 1fr; }
+  }
+  .menu-column { display: flex; flex-direction: column; gap: 2rem; }
+  
+  .menu-image {
+    width: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    height: 350px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  }
+
+  .group-title { font-family: var(--display); font-weight: 600; font-size: 1.25rem; color: var(--wine); margin: 2.2rem 0 1rem; text-transform: uppercase; letter-spacing: 0.04em; }
+  .group-title:first-child { margin-top: 0; }
+
+  .item-row { display: flex; justify-content: space-between; gap: 1.2rem; padding: 1rem 0; border-bottom: 1px dotted rgba(27,24,18,0.15); }
+  .item-row:last-child { border-bottom: none; }
+  .item-main { flex: 1; }
+  .item-name { font-weight: 600; font-size: 1.1rem; color: var(--ink); }
+  .item-desc { font-size: 1rem; color: var(--ink-soft); margin-top: 0.3rem; line-height: 1.5; }
+  .item-price { font-family: var(--display); font-weight: 600; font-size: 1.1rem; color: var(--ink-soft); white-space: nowrap; padding-top: 0.1rem; }
+
+  .drinks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  @media (max-width: 760px) { .drinks-grid { grid-template-columns: 1fr; gap: 0; } }
+
+  .cta-band { background: var(--ink); color: var(--paper); text-align: center; padding: 4.5rem 0; }
+  .cta-band h2 { font-family: var(--display); font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.4rem); margin-bottom: 1rem; }
+  .cta-band p { color: #CFC8B9; font-size: 1.1rem; margin-bottom: 2.2rem; }
+  .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<div class="status-bar" style="background-color: #6B2D3E; color: #FFFFFF; font-size: 0.85rem; width: 100%; box-sizing: border-box;">
+  <div style="max-width: 1340px; margin: 0 auto; padding: 0.5rem 2rem; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
+    <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;">
+      <span id="status-dot" style="width: 8px; height: 8px; background-color: #7FBF7F; border-radius: 50%; display: inline-block;"></span>
+      <span id="status-text">Checking hours…</span>
+    </div>
+    <div>
+      <a href="https://www.google.com/maps/search/?api=1&query=4776+Sonoma+Hwy,+Santa+Rosa,+CA+95409" target="_blank" rel="noopener noreferrer" style="color: #FFFFFF; text-decoration: none;">4776 Sonoma Hwy, Santa Rosa, CA 95409</a> 
+      &nbsp;·&nbsp; 
+      <a href="tel:+17075420861" style="color: #FFFFFF; text-decoration: none; white-space: nowrap;">(707) 542-0861</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-header" style="position: sticky; top: 0; z-index: 1000; background-color: #F3EFE7; border-bottom: 1px solid rgba(27,24,18,0.08); box-shadow: 0 2px 10px rgba(0,0,0,0.03); width: 100%;">
+  <div style="max-width: 1340px; margin: 0 auto; padding: 1.1rem 2rem; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box;">
+    <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none; flex-shrink: 0;">
+      <img loading="lazy" src="Bird_Logo_clknrs.png" alt="The Bird Logo" style="height: 38px; width: auto; border-radius: 50%; display: block;">
+      <span style="font-family: var(--display); font-weight: 700; font-size: 1.25rem; color: #1B1812; letter-spacing: -0.01em;">The Bird</span>
+    </a>
+
+    <nav class="nav-links" style="margin-left: 2.5rem; margin-right: 2rem;">
+      <a href="menu.html" class="active">Menu</a>
+      <a href="happyhour.html">Happy Hour</a>
+      <a href="thanksgiving-takeout.html">Thanksgiving Takeout</a>
+      <a href="thanksgiving-reservations.html">Thanksgiving Reservations</a>
+      <a href="catering.html">Catering</a>
+      <a href="livemusic.html">Live Music</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="reviews.html">Reviews</a>
+      <a href="location.html">Location</a>
+      <a href="about.html">About</a>
+    </nav>
+
+    <div style="flex-shrink: 0;">
+      <a href="https://order.spoton.com/so-the-bird-4685/santa-rosa-ca/60ccbc7724b4c4514ff4c87b" target="_blank" rel="noopener noreferrer" style="display: inline-block; background-color: #6B2D3E; color: #FFFFFF; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 0.88rem; padding: 0.65rem 1.25rem; border-radius: 4px; text-decoration: none; letter-spacing: 0.02em;">Order Now</a>
+    </div>
+  </div>
+</header>
+
+<nav class="sub-nav">
+  <div class="wrap">
+    <a href="#lunch" class="active-sub">Lunch</a>
+    <a href="#dinner">Dinner</a>
+    <a href="#bbq">Friday BBQ</a>
+    <a href="#pizza">Wood-Fired Pizza</a>
+    <a href="#drinks">Beer, Wine &amp; Drinks</a>
+  </div>
+</nav>
+
+<section class="menu-hero">
+  <div class="wrap">
+    <div class="eyebrow">The Full Menu</div>
+    <h1>Everything From The Kitchen &amp; Bar</h1>
+    <p>Our Lunch, dinner, Friday BBQ, and wood-fired pizza menus all in one place. We also have a full bar where our bartenders can pair your meal with cocktails, beer, wine or champagne.</p>
+  </div>
+</section>
+
+<!-- LUNCH -->
+<section class="menu-section" id="lunch">
+  <div class="wrap">
+    <div class="menu-section-head">
+      <h2>Lunch Menu</h2>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-column">
+        <div>
+          <div class="group-title">Starters</div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Chicken Wings</div><div class="item-desc">Seven crispy seasoned wings with carrots, celery, and teriyaki or traditional spicy sauce</div></div><div class="item-price">$14.95</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Pulled Pork Nachos</div><div class="item-desc">Housemade tortilla chips topped with pulled pork, melted cheese, pico de gallo, sour cream &amp; jalapeños</div></div><div class="item-price">$20.95</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Mozzarella Sticks</div><div class="item-desc">Served with marinara sauce</div></div><div class="item-price">$12.50</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Fish Tacos</div><div class="item-desc">Two tacos, fried cod, cabbage slaw, pico de gallo &amp; guacamole, spicy sour cream aioli</div></div><div class="item-price">$16.50</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Turkey Dip</div><div class="item-desc">Housemade chips with fresh ground turkey salad, mayo, celery &amp; onions</div></div><div class="item-price">$14.95</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Turkey Strips</div><div class="item-desc">Breaded and deep fried turkey with house dipping sauce</div></div><div class="item-price">$15.75</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Onion Rings</div><div class="item-desc">Beer battered, served with ranch dressing</div></div><div class="item-price">$13.00</div></div>
+        </div>
+
+        <img loading="lazy" src="pulled_pork_nachos.jpg" alt="Pulled Pork Nachos" class="menu-image">
+
+        <div>
+          <div class="group-title">Soup &amp; Salad</div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Bowl of Turkey Soup</div><div class="item-desc">Housemade turkey stock with carrots, celery, onions, garlic, herbs &amp; housemade pasta noodles</div></div><div class="item-price">$9.00</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Big Joe's Chopped Salad</div><div class="item-desc">Mixed greens, chopped turkey, ham, blue cheese, carrots, cucumbers, green beans, beets, tomatoes</div></div><div class="item-price">$22.50</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Caesar Salad</div><div class="item-desc">Romaine, housemade Caesar dressing, Parmesan, croutons. Add turkey or shrimp +$6.00</div></div><div class="item-price">$15.95</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Half Sandwich &amp; Soup or Salad</div><div class="item-desc">Half turkey sandwich with mixed green salad or turkey soup</div></div><div class="item-price">$15.95</div></div>
+        </div>
+      </div>
+      
+      <div class="menu-column">
+        <img loading="lazy" src="club_sandwich.jpg" alt="The Bird Club Sandwich" class="menu-image">
+        
+        <div>
+          <div class="group-title">Sandwiches</div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Turkey Bacon Avocado</div><div class="item-desc">Roasted turkey, avocado, applewood smoked bacon, cheddar, Thousand Island, tomato on sourdough</div></div><div class="item-price">$18.95</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">The Bird Club</div><div class="item-desc">Triple decker sourdough with turkey, ham, bacon, lettuce, tomato. Add avocado +$2.00</div></div><div class="item-price">$19.95</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Open Face Turkey</div><div class="item-desc">Mashed potatoes, stuffing, gravy &amp; cranberry sauce</div></div><div class="item-price">$19.50</div></div>
+        </div>
+        
+        <img loading="lazy" src="burger_2.jpg" alt="Big Beef Burger" class="menu-image">
+
+        <div>
+          <div class="group-title">House Specialties</div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Big Beef Burger</div><div class="item-desc">3/4 lb brisket &amp; tri-tip blend, cheese, lettuce, tomato, tempura onion ring, brioche bun. Add bacon +$4.00</div></div><div class="item-price">$21.50</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">The Bird Special Thanksgiving Dinner</div><div class="item-desc">Fresh oven roasted turkey, stuffing, mashed potatoes, gravy, cranberry sauce</div></div><div class="item-price">$27.50</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Turkey Pot Pie</div><div class="item-desc">Turkey, carrots, peas, potatoes, covered in puff pastry</div></div><div class="item-price">$21.50</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Fish &amp; Chips</div><div class="item-desc">Three pieces tempura battered cod, French fries, coleslaw</div></div><div class="item-price">$24.20</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Centered & Expanded Fish Tacos Feature spanning across the section -->
+    <div style="margin-top: 2.5rem; display: flex; justify-content: center;">
+      <img loading="lazy" src="tacos_2.jpg" alt="Fish Tacos" class="menu-image" style="width: 100%; max-width: 850px; height: 440px; object-fit: cover; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
+    </div>
+  </div>
+</section>
+
+<!-- DINNER -->
+<section class="menu-section" id="dinner">
+  <div class="wrap">
+    <div class="menu-section-head"><h2>Dinner Menu</h2></div>
+
+    <div class="menu-grid">
+      <!-- Left Column: Starters + Corned Beef photo -->
+      <div class="menu-column">
+        <div>
+          <div class="group-title">Starters</div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Chicken Wings</div><div class="item-desc">Seven crispy seasoned wings, carrots, celery, teriyaki or traditional spicy sauce</div></div><div class="item-price">$14.95</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Pulled Pork Nachos</div><div class="item-desc">Housemade tortilla chips, pulled pork, melted cheese, pico de gallo, sour cream &amp; jalapeños</div></div><div class="item-price">$20.95</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Mozzarella Sticks</div><div class="item-desc">Served with marinara sauce</div></div><div class="item-price">$12.50</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Crab Cakes</div><div class="item-desc">Two crab cakes drizzled with Meyer lemon aioli over mixed greens</div></div><div class="item-price">$18.95</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Turkey Dip</div><div class="item-desc">Housemade chips with fresh ground turkey salad, mayo, celery &amp; onions</div></div><div class="item-price">$14.95</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Crispy Calamari</div><div class="item-desc">Fried, breaded mixed calamari with cocktail sauce</div></div><div class="item-price">$19.00</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Onion Rings</div><div class="item-desc">Beer battered, served with ranch dressing</div></div><div class="item-price">$13.00</div></div>
+        </div>
+        
+        <img loading="lazy" src="cornbeef_2.jpg" alt="Corned Beef" class="menu-image" style="object-position: center 80%;">
+      </div>
+      
+      <!-- Right Column: Soup & Salad + Pot Pie photo + House Specialties -->
+      <div class="menu-column">
+        <div>
+          <div class="group-title">Soup &amp; Salad</div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Bowl of Turkey Soup</div><div class="item-desc">Housemade turkey stock with carrots, celery, onions, garlic, herbs &amp; housemade pasta noodles</div></div><div class="item-price">$9.00</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Big Joe's Chopped Salad</div><div class="item-desc">Mixed greens, chopped turkey, ham, blue cheese, carrots, cucumbers, beets, onions, green beans, tomatoes</div></div><div class="item-price">$22.50</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Caesar Salad</div><div class="item-desc">Romaine, housemade Caesar dressing, Parmesan, croutons. Add turkey or shrimp +$6.00</div></div><div class="item-price">$15.95</div></div>
+        </div>
+
+        <img loading="lazy" src="chicken_pot_pie_2.jpg" alt="Turkey Pot Pie" class="menu-image">
+
+        <div>
+          <div class="group-title">House Specialties</div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Big Beef Burger</div><div class="item-desc">3/4 lb brisket &amp; tri-tip blend, cheese, lettuce, tomato, onion ring, brioche bun, fries. Add bacon +$4.00</div></div><div class="item-price">$21.50</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">The Bird Special Thanksgiving Dinner</div><div class="item-desc">Fresh oven roasted turkey, stuffing, mashed potatoes, gravy, cranberry sauce</div></div><div class="item-price">$27.50</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Turkey Scaloppini</div><div class="item-desc">Sautéed with mushrooms, onions &amp; Marsala wine sauce, mashed potatoes &amp; seasonal vegetables</div></div><div class="item-price">$28.95</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Turkey Pot Pie</div><div class="item-desc">Turkey, carrots, peas, potatoes, puff pastry</div></div><div class="item-price">$21.50</div></div>
+          <div class="item-row"><div class="item-main"><div class="item-name">Fish &amp; Chips</div><div class="item-desc">Three pieces tempura battered cod, French fries, coleslaw</div></div><div class="item-price">$24.20</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Centered & Highlighted Fresh Seafood & Pasta Feature Card -->
+    <div style="margin-top: 3rem; border-top: 1px dotted rgba(27,24,18,0.15); padding-top: 3rem;">
+      <div style="max-width: 900px; margin: 0 auto; background: var(--paper-2); border-radius: 8px; border: 1px solid rgba(27,24,18,0.08); padding: 1.8rem; box-shadow: 0 4px 15px rgba(0,0,0,0.04);">
+        <div class="menu-grid" style="align-items: center; gap: 2.5rem;">
+          <img loading="lazy" src="pasta_dish_2.jpg" alt="Housemade Pasta Dish" style="width: 100%; height: 280px; object-fit: contain; border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); background-color: rgba(0,0,0,0.02);">
+          <div>
+            <div class="group-title" style="margin-top: 0; font-size: 1.35rem; color: var(--wine);">Fresh Seafood &amp; Pasta</div>
+            <div class="item-row" style="border-bottom: 1px dotted rgba(27,24,18,0.15);"><div class="item-main"><div class="item-name">Pasta Special of the Day</div><div class="item-desc">Handcrafted housemade pasta, made fresh using traditional techniques — ask your server for today's details</div></div><div class="item-price">Ask server</div></div>
+            <div class="item-row" style="border-bottom: none;"><div class="item-main"><div class="item-name">Seafood Special of the Day</div><div class="item-desc">Ask your server for details</div></div><div class="item-price">Ask server</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BBQ -->
+<section class="menu-section" id="bbq">
+  <div class="wrap">
+    <div class="menu-section-head">
+      <h2>Friday BBQ Menu</h2>
+      <div class="sub">Choice of side: potato salad, coleslaw, fries, or tater tots</div>
+    </div>
+    
+    <div class="menu-grid">
+      <div class="menu-column">
+        <div class="item-row"><div class="item-main"><div class="item-name">Slow Smoked Baby Back Ribs — Half Rack</div><div class="item-desc">Housemade dry rub, lightly sauced with housemade BBQ sauce. One side included</div></div><div class="item-price">$26.95</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Slow Smoked Baby Back Ribs — Full Rack Family Meal</div><div class="item-desc">Two sides included</div></div><div class="item-price">$44.95</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Tri-Tip Sandwich</div><div class="item-desc">Slow smoked, dry rub, brioche bun, choice of BBQ or Alabama white sauce, one side</div></div><div class="item-price">$19.50</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Brisket Sandwich</div><div class="item-desc">Brioche roll, choice of BBQ or Alabama white sauce, one side</div></div><div class="item-price">$19.50</div></div>
+      </div>
+      <div class="menu-column">
+        <img loading="lazy" src="meat_2.jpg" alt="BBQ Meat Dish" class="menu-image" style="height: 250px;">
+        
+        <div class="item-row"><div class="item-main"><div class="item-name">Bone-In Short Rib</div><div class="item-desc">Slow smoked, house dry rub, choice of two sides</div></div><div class="item-price">$39.00</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Brisket Dinner</div><div class="item-desc">Three slices, mashed potatoes &amp; gravy, seasonal vegetables</div></div><div class="item-price">$29.50</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PIZZA -->
+<section class="menu-section" id="pizza">
+  <div class="wrap">
+    <div class="menu-section-head"><h2>Wood-Fired Pizza Menu</h2></div>
+    
+    <div class="menu-grid">
+      <div class="menu-column">
+        <div class="item-row"><div class="item-main"><div class="item-name">Margherita</div><div class="item-desc">Fresh mozzarella, basil, homemade red sauce</div></div><div class="item-price">$24</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Pepperoni &amp; Cheese</div><div class="item-desc">Cupping pepperoni with whole milk mozzarella</div></div><div class="item-price">$24</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Cheese Pizza</div><div class="item-desc">San Marzano tomato sauce with whole milk mozzarella cheese</div></div><div class="item-price">$22</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Sausage &amp; Mushroom</div><div class="item-desc">Sausage, wild mushrooms, onions, garlic &amp; cheese with homemade red sauce</div></div><div class="item-price">$26</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Seasonal Special</div><div class="item-desc">Ask your server for details</div></div><div class="item-price">$26</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Combination</div><div class="item-desc">All the meats and all the veggies</div></div><div class="item-price">$26</div></div>
+      </div>
+      <div class="menu-column">
+        <img loading="lazy" src="wood_fire_pizza_2.jpg" alt="Wood Fired Pizza" class="menu-image" style="height: 100%;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DRINKS -->
+<section class="menu-section" id="drinks">
+  <div class="wrap">
+    <div class="menu-section-head"><h2>Beer, Wine &amp; Other Drinks</h2></div>
+    <div class="drinks-grid">
+      <div>
+        <div class="group-title">Bottled Beer</div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Coors Banquet</div></div><div class="item-price">$5.00</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Coors Lite</div></div><div class="item-price">$5.00</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Budweiser</div></div><div class="item-price">$5.00</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Corona</div></div><div class="item-price">$6.00</div></div>
+
+        <div class="group-title">Draft Beer</div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Ghost Town</div></div><div class="item-price">$9.00</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Iron Ox</div></div><div class="item-price">$8.00</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Henhouse</div></div><div class="item-price">$8.00</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Sonoma Springs</div></div><div class="item-price">$8.00</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Ask server for rotating draft options</div></div><div class="item-price"></div></div>
+
+        <div class="group-title">Non-Alcoholic Beer</div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Corona</div></div><div class="item-price">$5.00</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Iron Ox Pilsner</div></div><div class="item-price">$5.00</div></div>
+      </div>
+      <div>
+        <div class="group-title">White Wine — Glass / Bottle</div>
+        <div class="item-row"><div class="item-main"><div class="item-name">St. Francis Chardonnay, Sonoma County</div></div><div class="item-price">$11 / $38</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Rombauer Chardonnay, Napa Valley</div></div><div class="item-price">$16 / $60</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">St. Francis Sauvignon Blanc, Sonoma County</div></div><div class="item-price">$10 / $36</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Rombauer Sauvignon Blanc, Napa Valley</div></div><div class="item-price">$13 / $45</div></div>
+
+        <div class="group-title">Rosé &amp; Sparkling</div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Whispering Angel Rosé, France</div></div><div class="item-price">$12 / $40</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Kendall Jackson Brut Sparkling</div></div><div class="item-price">$12 / $46</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Roederer Estate Brut, Anderson Valley</div></div><div class="item-price">$12 / $48</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Veuve Clicquot Yellow Label, France</div></div><div class="item-price">$20 / $90</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Dom Pérignon, France</div></div><div class="item-price">— / $300</div></div>
+        
+        <img loading="lazy" src="dom.jpg" alt="Dom Perignon Vintage Champagne" class="menu-image" style="margin-top: 1.5rem; height: 500px; object-fit: contain; background-color: rgba(0,0,0,0.03); padding: 10px;">
+
+        <div class="group-title">Red Wine — Glass / Bottle</div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Ketcham Pinot Noir, Russian River Valley</div></div><div class="item-price">$10 / $38</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Murphy Goode Red Wine, California</div></div><div class="item-price">$9 / $36</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Wild Thing Old Vine Zinfandel, Mendocino</div></div><div class="item-price">$12 / $40</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Silver Palm Cabernet Sauvignon, California</div></div><div class="item-price">$9 / $36</div></div>
+        <div class="item-row"><div class="item-main"><div class="item-name">Mazzocco Merlot, Dry Creek Valley</div></div><div class="item-price">$8 / $32</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <h2>Ready to order?</h2>
+    <p>Order online for pickup or delivery, or give us a call.</p>
+    <div class="cta-buttons">
+      <a class="btn btn-gold" href="https://order.spoton.com/so-the-bird-4685/santa-rosa-ca/60ccbc7724b4c4514ff4c87b" target="_blank" rel="noopener">Order Online</a>
+      <a class="btn btn-outline" href="tel:+17075420861">Call (707) 542-0861</a>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer" style="background: #1B1812; border-top: none; position: relative; color: #C7C0AF; padding: 2.5rem 0 1.5rem 0; width: 100%; box-sizing: border-box; text-align: left;">
+  <div class="wrap" style="max-width: 1180px; margin: 0 auto; padding: 0 4vw;">
+    <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2.2rem; border-bottom: 1px solid rgba(243,239,231,0.12);">
+      <div>
+        <a href="index.html" style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; text-decoration: none;">
+          <img loading="lazy" src="Bird_Logo_clknrs.png" alt="The Bird Logo" style="height: 38px; width: auto; border-radius: 50%;">
+          <span style="font-family: var(--display); font-weight: 700; font-size: 1.25rem; color: #F3EFE7;">The Bird</span>
+        </a>
+        <div style="margin-bottom: 0.6rem; font-size: 1.05rem; font-weight: 600; color: #C7C0AF;">
+          Great Food · Full Bar · Live Entertainment
+        </div>
+        <p style="font-size: 0.95rem; color: #A8A090; line-height: 1.6; max-width: 280px; margin: 0;">
+          Where Sonoma County comes together to eat, drink, and enjoy great music.
+        </p>
+      </div>
+
+      <div>
+        <h4 style="font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--gold); margin-bottom: 1.1rem; letter-spacing: 0.03em;">Explore</h4>
+        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.85rem; font-size: 1rem;">
+          <li><a href="menu.html" style="color: #C7C0AF; text-decoration: none;">Menu</a></li>
+          <li><a href="happyhour.html" style="color: #C7C0AF; text-decoration: none;">Happy Hour</a></li>
+          <li><a href="livemusic.html" style="color: #C7C0AF; text-decoration: none;">Live Music</a></li>
+          <li><a href="catering.html" style="color: #C7C0AF; text-decoration: none;">Catering</a></li>
+          <li><a href="gallery.html" style="color: #C7C0AF; text-decoration: none;">Gallery</a></li>
+          <li><a href="reviews.html" style="color: #C7C0AF; text-decoration: none;">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 style="font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--gold); margin-bottom: 1.1rem; letter-spacing: 0.03em;">Visit</h4>
+        <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 1rem; color: #C7C0AF;">
+          <a href="https://www.google.com/maps/search/?api=1&query=4776+Sonoma+Hwy,+Santa+Rosa,+CA+95409" target="_blank" rel="noopener" style="color: #C7C0AF; text-decoration: none;">4776 Sonoma Hwy</a>
+          <a href="https://www.google.com/maps/search/?api=1&query=4776+Sonoma+Hwy,+Santa+Rosa,+CA+95409" target="_blank" rel="noopener" style="color: #C7C0AF; text-decoration: none;">Santa Rosa, CA 95409</a>
+          <a href="tel:+17075420861" style="color: #C7C0AF; text-decoration: none; margin-top: 0.2rem;">(707) 542-0861</a>
+        </div>
+      </div>
+
+      <div>
+        <h4 style="font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--gold); margin-bottom: 1.1rem; letter-spacing: 0.03em;">Follow Us</h4>
+        <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
+          <a href="https://www.instagram.com/thebirdrestaurant707/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(243,239,231,0.25); color: #F3EFE7; text-decoration: none;">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/thebirdrestaurant707/" target="_blank" rel="noopener noreferrer" style="color: #C7C0AF; text-decoration: none; font-size: 1rem;">Instagram</a>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 0.8rem;">
+          <a href="https://www.facebook.com/thebird707" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(243,239,231,0.25); color: #F3EFE7; text-decoration: none;">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.facebook.com/thebird707" target="_blank" rel="noopener noreferrer" style="color: #C7C0AF; text-decoration: none; font-size: 1rem;">Facebook</a>
+        </div>
+      </div>
+    </div>
+
+    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; padding: 1.4rem 0 1.0rem 0; font-size: 0.85rem; color: #7A7265;">
+      <span>&copy; 2026 The Bird Restaurant. All rights reserved.</span>
+      <span>Santa Rosa, California · Since 1980</span>
+    </div>
+
+    <div style="text-align: center; margin-top: 1.5rem; padding-bottom: 0.5rem;">
+      <a href="https://castroascend.netlify.app/" target="_blank" rel="noopener noreferrer" style="color: #9A9285; font-size: 0.68rem; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem;">
+        Designed by AC
+        <span style="display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; background: #DCDCDC; border-radius: 3px; margin-left: 0.1rem;">
+          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#3B62A0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </span>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function() {
+    const dot = document.getElementById('status-dot');
+    const text = document.getElementById('status-text');
+    const now = new Date();
+    const day = now.getDay();
+    const hour = now.getHours() + now.getMinutes() / 60;
+    const hoursMap = {
+      0: [12, 19],
+      1: null,
+      2: [12, 21], 3: [12, 21], 4: [12, 21], 5: [12, 21],
+      6: [12, 21]
+    };
+    const todays = hoursMap[day];
+    const isOpen = todays && hour >= todays[0] && hour < todays[1];
+    if (isOpen) {
+      text.textContent = 'Open Now';
+    } else {
+      dot.style.backgroundColor = '#C97A6B';
+      text.textContent = 'Closed Now';
+    }
+  })();
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const sections = document.querySelectorAll('.menu-section');
+    const navLinks = document.querySelectorAll('.sub-nav a');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+          const offsetTop = targetSection.offsetTop - 120; 
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    window.addEventListener('scroll', () => {
+      let current = '';
+      
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 130; 
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('active-sub');
+        if (link.getAttribute('href').substring(1) === current) {
+          link.classList.add('active-sub');
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
