@@ -254,7 +254,22 @@
     display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--ink);
   }
   .mobile-menu {
-    display: none; flex-direction: column; background-color: var(--paper); position: absolute; top: 100%; left: 0; width: 100%; padding: 1rem 2rem; border-bottom: 1px solid rgba(27,24,18,0.08); box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+    display: none; 
+    flex-direction: column; 
+    background-color: var(--paper); 
+    position: absolute; 
+    top: 100%; 
+    left: 0; 
+    width: 100%; 
+    padding: 1rem 2rem; 
+    border-bottom: 1px solid rgba(27,24,18,0.08); 
+    box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    z-index: 1001;
+  }
+  .mobile-menu.active {
+    display: flex;
   }
   .mobile-menu a {
     padding: 0.75rem 0; font-weight: 500; border-bottom: 1px solid rgba(27,24,18,0.05); color: var(--ink); text-decoration: none;
@@ -772,7 +787,5 @@
   });
 </script>
 
-</body>
-</html>
 </body>
 </html>
