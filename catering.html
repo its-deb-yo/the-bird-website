@@ -427,6 +427,9 @@
   }
 
   @media (max-width: 540px) {
+    .form-card {
+      padding: 1.5rem 1.25rem;
+    }
     .form-row {
       grid-template-columns: 1fr;
       gap: 0;
@@ -732,17 +735,17 @@
     function displaySuccess() {
       if (!formCard) return;
       formCard.innerHTML = `
-        <div style="text-align: center; padding: 3.5rem 1.5rem; animation: fadeIn 0.4s ease-out;">
-          <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
+        <div style="text-align: center; padding: 1.5rem 0; animation: fadeIn 0.4s ease-out;">
+          <div style="display: flex; justify-content: center; margin-bottom: 1.25rem;">
             <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(110,42,56,0.1); border: 2px solid var(--wine); display: flex; align-items: center; justify-content: center; color: var(--wine);">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
             </div>
           </div>
-          <h2 style="font-family: var(--display); font-size: clamp(1.8rem, 3.5vw, 2.2rem); color: var(--ink); margin-bottom: 1rem;">Thank you!</h2>
-          <p style="font-size: 1.15rem; color: var(--ink-soft); line-height: 1.6; margin: 0 auto;">
-            We received your <span style="white-space: nowrap;">catering inquiry</span><br>and will get back to you within <span style="white-space: nowrap;">48-72 hours.</span>
+          <h2 style="font-family: var(--display); font-size: clamp(1.8rem, 3.5vw, 2.2rem); color: var(--ink); margin-bottom: 0.85rem;">Thank you!</h2>
+          <p style="font-size: clamp(1rem, 3vw, 1.12rem); color: var(--ink-soft); line-height: 1.55; margin: 0 auto; max-width: 420px;">
+            We received your catering inquiry<br>and will get back to you within <span style="white-space: nowrap;">48-72 hours.</span>
           </p>
-          <div style="margin-top: 2.2rem; padding-top: 1.5rem; border-top: 1px solid rgba(27,24,18,0.08); font-size: 0.95rem; color: var(--ink-soft); line-height: 1.6;">
+          <div style="margin-top: 1.75rem; padding-top: 1.35rem; border-top: 1px solid rgba(27,24,18,0.08); font-size: 0.95rem; color: var(--ink-soft); line-height: 1.6;">
             Need to reach us right away?<br>Call us directly at <a href="tel:+17075420861" style="white-space: nowrap; color: var(--wine); font-weight: 700; text-decoration: underline;"><span style="white-space: nowrap;">(707) 542-0861</span></a>.
           </div>
         </div>
@@ -771,13 +774,11 @@
           displaySuccess();
         })
         .catch(() => {
-          // If testing locally (file:// URL) or offline, display the exact same boxed UI instead of an alert popup
           displaySuccess();
         });
       });
     }
-  })();
-</script>
+  })();</script>
 
 </body>
 </html>
