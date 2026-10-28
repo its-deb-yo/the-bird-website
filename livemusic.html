@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <title>Live Music — The Bird Restaurant</title>
+<meta name="description" content="Experience live music at The Bird Restaurant in Santa Rosa, CA. Check out our Backyard Summer Live Music Bash calendar featuring outdoor dining, drinks, and live entertainment.">
 <link rel="icon" type="image/png" href="Bird_Logo_clknrs.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link href="css2.css" rel="stylesheet">
 
 <!-- Google Analytics GA4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-4L2MCNKGV0"></script>
@@ -106,9 +106,9 @@
   .live-music-page {
     background: #14120E;
     color: var(--paper);
-    padding: 5.5rem 0 6.5rem;
-    min-height: calc(100vh - 120px);
+    padding: 3.8rem 0 2rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
@@ -119,7 +119,7 @@
     background: #1B1812;
     border: 1px solid rgba(243,239,231,0.14);
     border-radius: 8px;
-    padding: 3.8rem 2.6rem;
+    padding: 3.4rem 2.4rem 3rem;
     box-shadow: 0 8px 30px rgba(0,0,0,0.3);
   }
   .live-badge {
@@ -157,15 +157,158 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--gold);
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.5rem;
     font-weight: 700;
   }
   .live-card p.desc {
     color: #CFC8B9;
     max-width: 520px;
-    margin: 0 auto 2.4rem;
+    margin: 0 auto 2.2rem;
     font-size: 1.1rem;
     line-height: 1.7;
+  }
+
+  /* Scroll prompt below the card */
+  .scroll-cue {
+    margin-top: 1.8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    color: var(--gold);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s, transform 0.2s;
+  }
+  .scroll-cue:hover {
+    color: #cbae6c;
+    transform: translateY(2px);
+  }
+  .scroll-cue svg {
+    animation: cueBounce 2s ease-in-out infinite;
+  }
+  @keyframes cueBounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(4px); }
+    60% { transform: translateY(2px); }
+  }
+
+  /* ---------- Atmosphere Strip (Photo Gallery Grid) ---------- */
+  .live-gallery-section {
+    background: #14120E;
+    color: var(--paper);
+    padding: 0.5rem 0 5.5rem;
+    border-top: none;
+  }
+  .live-gallery-head {
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto 2.2rem;
+    padding-top: 0.5rem;
+  }
+  .live-gallery-eyebrow {
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+  .live-gallery-head h2 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2rem, 4vw, 2.7rem);
+    color: #FFFFFF;
+    letter-spacing: -0.01em;
+  }
+  .live-photo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.35rem;
+  }
+  .live-photo-item {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    height: 270px;
+    background: #1B1812;
+    border: 1px solid rgba(185, 154, 79, 0.25);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .live-photo-item:hover,
+  .live-photo-item:focus-visible {
+    transform: translateY(-4px);
+    border-color: rgba(185, 154, 79, 0.75);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.55);
+    outline: none;
+  }
+  .live-photo-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+  }
+  .live-photo-item:hover img {
+    transform: scale(1.06);
+  }
+  
+  /* Touch-friendly caption bar */
+  .live-photo-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 1rem 0.9rem;
+    background: linear-gradient(to top, rgba(20, 18, 14, 0.96), rgba(20, 18, 14, 0.6) 70%, transparent);
+    color: #F3EFE7;
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+  .live-photo-caption span.view-pill {
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #1B1812;
+    background: var(--gold);
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+    font-weight: 700;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  @media (max-width: 960px) {
+    .live-photo-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.1rem;
+    }
+    .live-photo-item {
+      height: 230px;
+    }
+  }
+  @media (max-width: 600px) {
+    .live-card { padding: 2.8rem 1.4rem; }
+    .live-card p.desc { font-size: 1rem; }
+  }
+  @media (max-width: 560px) {
+    .live-photo-grid {
+      grid-template-columns: 1fr;
+    }
+    .live-photo-item {
+      height: 250px;
+    }
   }
 
   /* Calendar Modal */
@@ -242,22 +385,289 @@
     transition: transform 0.2s ease-out;
   }
 
-  @media (max-width: 600px) {
-    .live-card { padding: 2.8rem 1.4rem; }
-    .live-card p.desc { font-size: 1rem; }
+  /* ---------- Photo Lightbox Modal (Optimized for 50+ Audiences) ---------- */
+  .photo-lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 2050;
+    background: rgba(20, 18, 14, 0.96);
+    align-items: center;
+    justify-content: center;
+    padding: 3vh 3vw;
+  }
+  .photo-lightbox.open {
+    display: flex;
+  }
+  .photo-lb-content {
+    max-width: 980px;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    padding: 0 1rem;
+  }
+  .photo-lb-img {
+    max-height: 75vh;
+    max-width: 86vw;
+    margin: 0 auto;
+    border-radius: 6px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.75);
+    border: 1px solid rgba(185, 154, 79, 0.35);
+    display: block;
+  }
+  .photo-lb-footer {
+    margin-top: 1.2rem;
+  }
+  .photo-lb-counter {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.4rem;
+  }
+  .photo-lb-caption {
+    color: var(--paper);
+    font-size: 1.12rem;
+    font-weight: 500;
+    max-width: 860px;
+    margin: 0 auto;
+    line-height: 1.55;
+    text-wrap: balance;
+  }
+
+  /* 50+ Accessible Large Close Button (48x48px target) */
+  .photo-lb-close {
+    position: fixed;
+    top: 1.4rem;
+    right: 1.8rem;
+    color: #F3EFE7;
+    font-size: 2.8rem;
+    background: rgba(27, 24, 18, 0.85);
+    border: 1.5px solid rgba(243, 239, 231, 0.25);
+    border-radius: 6px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 2070;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.18s;
+  }
+  .photo-lb-close:hover,
+  .photo-lb-close:focus-visible {
+    background: var(--wine);
+    color: #FFFFFF;
+    border-color: var(--gold);
+    outline: none;
+    transform: scale(1.05);
+  }
+
+  /* 50+ Accessible Large Nav Arrows (56x56px target) */
+  .photo-lb-nav-btn {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(27, 24, 18, 0.88);
+    border: 2px solid rgba(185, 154, 79, 0.45);
+    color: #F3EFE7;
+    font-size: 3rem;
+    cursor: pointer;
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    line-height: 1;
+    z-index: 2060;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+    transition: background 0.2s, border-color 0.2s, transform 0.2s, color 0.2s;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .photo-lb-nav-btn:hover,
+  .photo-lb-nav-btn:focus-visible {
+    background: var(--wine);
+    border-color: var(--gold);
+    color: #FFFFFF;
+    outline: none;
+    transform: translateY(-50%) scale(1.08);
+  }
+  .photo-lb-nav-btn.prev {
+    left: 1.6rem;
+  }
+  .photo-lb-nav-btn.next {
+    right: 1.6rem;
+  }
+
+  @media (max-width: 820px) {
+    .photo-lb-nav-btn {
+      width: 50px;
+      height: 50px;
+      font-size: 2.3rem;
+      background: rgba(27, 24, 18, 0.92);
+    }
+    .photo-lb-nav-btn.prev { left: 0.6rem; }
+    .photo-lb-nav-btn.next { right: 0.6rem; }
+    .photo-lb-close {
+      top: 1rem;
+      right: 1rem;
+      width: 46px;
+      height: 46px;
+      font-size: 2.4rem;
+    }
+  }
+
+  /* ---------- Footer Base Classes ---------- */
+  .footer-divider {
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(185, 154, 79, 0.5), transparent);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    gap: 2.5rem;
+    padding-bottom: 2.2rem;
+    border-bottom: 1px solid rgba(243,239,231,0.12);
+  }
+  .footer-bottom-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    padding: 1.4rem 0 1.0rem 0;
+    font-size: 0.85rem;
+    color: #7A7265;
+  }
+
+  /* ---------- Mobile Header & Navigation System ---------- */
+  .status-bar-inner {
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 0.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .site-header-inner {
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 1.1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--ink);
+  }
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    background-color: var(--paper);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    border-bottom: 1px solid rgba(27, 24, 18, 0.08);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    z-index: 1001;
+  }
+  .mobile-menu.active {
+    display: flex;
+  }
+  .mobile-menu a {
+    padding: 0.75rem 0;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(27, 24, 18, 0.05);
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .mobile-order-btn {
+    background-color: var(--wine) !important;
+    color: var(--paper) !important;
+    text-align: center !important;
+    padding: 0.85rem !important;
+    border-radius: 4px;
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600 !important;
+    border-bottom: none !important;
+  }
+
+  /* Mobile Breakpoint Rules */
+  @media (max-width: 920px) {
+    /* Status Bar Mobile Fix */
+    .status-bar-inner {
+      flex-direction: column;
+      gap: 0.4rem;
+      text-align: left;
+      align-items: flex-start;
+      padding: 0.85rem 5vw;
+      line-height: 1.4;
+    }
+    /* Hide desktop row navigation and order button */
+    .nav-links,
+    .header-order-btn {
+      display: none !important;
+    }
+    /* Reveal the hamburger toggle button */
+    .hamburger {
+      display: block;
+    }
+    .site-header-inner {
+      padding: 1rem;
+    }
+    /* Footer Mobile Fix */
+    .site-footer {
+      padding-top: 4rem !important;
+    }
+    .footer-divider {
+      top: 1.5rem;
+      left: 5%;
+      right: 5%;
+      background: linear-gradient(90deg, transparent, rgba(185, 154, 79, 0.8), transparent);
+    }
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .footer-bottom-flex {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+    }
   }
 </style>
 </head>
 <body>
 
-<!-- 1. STATUS BAR (Scrolls away naturally) -->
+<!-- 1. STATUS BAR -->
 <div class="status-bar" style="background-color: #6B2D3E; color: #FFFFFF; font-size: 0.85rem; width: 100%; box-sizing: border-box;">
-  <div style="max-width: 1340px; margin: 0 auto; padding: 0.5rem 2rem; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;">
+  <div class="status-bar-inner">
     <div style="display: flex; align-items: center; gap: 0.5rem; font-weight: 600;">
       <span id="status-dot" style="width: 8px; height: 8px; background-color: #7FBF7F; border-radius: 50%; display: inline-block;"></span>
       <span id="status-text">Checking hours…</span>
     </div>
-    <div>
+    <div class="status-address">
       <a href="https://www.google.com/maps/search/?api=1&query=4776+Sonoma+Hwy,+Santa+Rosa,+CA+95409" target="_blank" rel="noopener noreferrer" style="color: #FFFFFF; text-decoration: none;">4776 Sonoma Hwy, Santa Rosa, CA 95409</a> 
       &nbsp;·&nbsp; 
       <a href="tel:+17075420861" style="color: #FFFFFF; text-decoration: none; white-space: nowrap;">(707) 542-0861</a>
@@ -265,18 +675,13 @@
   </div>
 </div>
 
-<!-- 2. STICKY NAV BAR (Pins to top when scrolled - WITH SHARP BORDER) -->
+<!-- 2. STICKY NAV BAR -->
 <header class="site-header" style="position: sticky; top: 0; z-index: 1000; background-color: #F3EFE7; border-bottom: 1px solid rgba(27,24,18,0.08); box-shadow: 0 2px 10px rgba(0,0,0,0.03); width: 100%;">
-  <div style="max-width: 1340px; margin: 0 auto; padding: 1.1rem 2rem; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box;">
-    
-    <!-- Left: Brand -->
+  <div class="site-header-inner">
     <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none; flex-shrink: 0;">
-      <!-- Logo: Image -->
-      <img loading="lazy" src="Bird_Logo_clknrs.png" alt="The Bird Logo" style="height: 38px; width: auto; border-radius: 50%; display: block;">
+      <img src="Bird_Logo_clknrs.png" alt="The Bird Logo" width="38" height="38" style="height: 38px; width: auto; border-radius: 50%;">
       <span style="font-family: var(--display); font-weight: 700; font-size: 1.25rem; color: #1B1812; letter-spacing: -0.01em;">The Bird</span>
     </a>
-
-    <!-- Center: Navigation Links -->
     <nav class="nav-links" style="margin-left: 2.5rem; margin-right: 2rem;">
       <a href="menu.html">Menu</a>
       <a href="happyhour.html">Happy Hour</a>
@@ -289,79 +694,165 @@
       <a href="location.html">Location</a>
       <a href="about.html">About</a>
     </nav>
-
-    <!-- Right: Order Now Button -->
-    <div style="flex-shrink: 0;">
-      <a href="https://order.spoton.com/so-the-bird-4685/santa-rosa-ca/60ccbc7724b4c4514ff4c87b" target="_blank" rel="noopener noreferrer" style="display: inline-block; background-color: #6B2D3E; color: #FFFFFF; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 0.88rem; padding: 0.65rem 1.25rem; border-radius: 4px; text-decoration: none; letter-spacing: 0.02em;">Order Now</a>
+    <div style="flex-shrink: 0; display: flex; align-items: center; gap: 1rem;">
+      <a href="https://order.spoton.com/so-the-bird-4685/santa-rosa-ca/60ccbc7724b4c4514ff4c87b" target="_blank" rel="noopener noreferrer" class="header-order-btn" style="display: inline-block; background-color: #6B2D3E; color: #FFFFFF; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-weight: 600; font-size: 0.88rem; padding: 0.65rem 1.25rem; border-radius: 4px; text-decoration: none; letter-spacing: 0.02em;">Order Now</a>
+      <button class="hamburger" id="mobile-menu-toggle" aria-label="Toggle navigation">
+        <svg viewBox="0 0 24 24" width="28" height="28" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
     </div>
-
   </div>
+  
+  <!-- Mobile Menu Dropdown -->
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="menu.html">Menu</a>
+    <a href="happyhour.html">Happy Hour</a>
+    <a href="thanksgiving-takeout.html">Thanksgiving Takeout</a>
+    <a href="thanksgiving-reservations.html">Thanksgiving Reservations</a>
+    <a href="catering.html">Catering</a>
+    <a href="livemusic.html" class="active">Live Music</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="reviews.html">Reviews</a>
+    <a href="location.html">Location</a>
+    <a href="about.html">About</a>
+    <a href="https://order.spoton.com/so-the-bird-4685/santa-rosa-ca/60ccbc7724b4c4514ff4c87b" target="_blank" rel="noopener noreferrer" class="mobile-order-btn">Order Now</a>
+  </nav>
 </header>
 
-<!-- MAIN LIVE MUSIC SECTION -->
-<main class="live-music-page">
-  <div class="wrap">
-    <div class="live-card">
-      <div class="live-badge"><span class="live-dot"></span>New Stage This Summer</div>
-      <h1>Backyard Summer Live Music Bash</h1>
-      <div class="live-meta">All Ages &middot; April &ndash; October</div>
-      <p class="desc">Our backyard turns into one of Sonoma County's favorite outdoor venues with live music starting late spring and going throughout the summer season. View our calendar for live music acts packed with music, dancing, food and drinks!</p>
+<!-- MAIN CONTENT WRAPPER -->
+<main id="main-content">
+  <!-- MAIN LIVE MUSIC HERO CARD -->
+  <section class="live-music-page">
+    <div class="wrap">
+      <div class="live-card">
+        <div class="live-badge"><span class="live-dot"></span>New Stage This Summer</div>
+        <h1>Backyard Summer Live Music Bash</h1>
+        <div class="live-meta">All Ages &middot; April &ndash; October</div>
+        <p class="desc">Our backyard turns into one of Sonoma County's favorite outdoor venues with live music starting late spring and going throughout the summer season. View our calendar for live music acts packed with music, dancing, food and drinks!</p>
+        
+        <!-- Single Action Button: View Calendar with Lightbox Modal -->
+        <button class="btn btn-gold" id="open-calendar" type="button" aria-haspopup="dialog" aria-controls="calendar-modal">
+          View Calendar
+        </button>
+      </div>
+    </div>
+
+    <!-- Scroll Down Prompt (Guides visitors to the photos below) -->
+    <a href="#backyard-scenes" class="scroll-cue" aria-label="Scroll down to photo gallery">
+      <span>Explore Concert Photos</span>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </a>
+  </section>
+
+  <!-- ATMOSPHERE STRIP (4-PHOTO GRID) -->
+  <section id="backyard-scenes" class="live-gallery-section" aria-label="Concert photos from The Bird's backyard stage">
+    <div class="wrap">
+      <div class="live-gallery-head">
+        <div class="live-gallery-eyebrow">The Experience</div>
+        <h2>Scenes From The Backyard</h2>
+      </div>
+
+      <div class="live-photo-grid">
+        <!-- Photo 1: live_music.jpg (Lead singer & crowd) -->
+        <div class="live-photo-item" data-full="live_music.jpg" data-caption="Where good music meets great company. Weekends at The Bird don't get much better than this." role="button" tabindex="0" aria-label="View photo: Summer Concerts">
+          <img loading="lazy" src="live_music.jpg" alt="Lead vocalist and band performing to a full crowd at The Bird" width="600" height="400">
+          <div class="live-photo-caption">
+            <span>Summer Concerts</span>
+            <span class="view-pill">View Photo &#8250;</span>
+          </div>
+        </div>
+
+        <!-- Photo 2: IMG_0818.jpg (Stage pavilion at dusk) -->
+        <div class="live-photo-item" data-full="IMG_0818.jpg" data-caption="Dusk settles over Rincon Valley as the backyard stage comes alive." role="button" tabindex="0" aria-label="View photo: Stage Pavilion">
+          <img loading="lazy" src="IMG_0818.jpg" alt="Live band performing on the covered backyard stage pavilion at dusk" width="600" height="400">
+          <div class="live-photo-caption">
+            <span>Stage Pavilion</span>
+            <span class="view-pill">View Photo &#8250;</span>
+          </div>
+        </div>
+
+        <!-- Photo 3: IMG_0820.jpg (Afternoon acoustic set) -->
+        <div class="live-photo-item" data-full="IMG_0820.jpg" data-caption="The perfect soundtrack for lunch and drinks out on the patio." role="button" tabindex="0" aria-label="View photo: Daytime Jams">
+          <img loading="lazy" src="IMG_0820.jpg" alt="Acoustic rock trio performing outdoor afternoon live music set" width="600" height="400">
+          <div class="live-photo-caption">
+            <span>Daytime Jams</span>
+            <span class="view-pill">View Photo &#8250;</span>
+          </div>
+        </div>
+
+        <!-- Photo 4: IMG_0819.jpg (Night lighting & dancing) -->
+        <div class="live-photo-item" data-full="IMG_0819.jpg" data-caption="Electric night sets, cold cocktails, and a dance floor that keeps going after dark." role="button" tabindex="0" aria-label="View photo: Night Shows">
+          <img loading="lazy" src="IMG_0819.jpg" alt="Band rocking out under vibrant blue and violet stage lights with dancers" width="600" height="400">
+          <div class="live-photo-caption">
+            <span>Night Shows</span>
+            <span class="view-pill">View Photo &#8250;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CALENDAR MODAL WITH ZOOM & RESET -->
+  <div id="calendar-modal" class="cal-modal" role="dialog" aria-modal="true" aria-label="2027 Tribute Lineup Live Music Calendar">
+    <div class="cal-modal-content">
+      <button id="close-calendar" class="cal-close-btn" aria-label="Close calendar">&times;</button>
       
-      <!-- Single Action Button: View Calendar with Lightbox Modal -->
-      <button class="btn btn-gold" id="open-calendar" type="button" aria-haspopup="dialog" aria-controls="calendar-modal">
-        View Calendar
-      </button>
+      <div class="cal-controls">
+        <button id="cal-zoom-out" aria-label="Zoom out">&#8722;</button>
+        <button id="cal-zoom-reset" style="font-size:0.85rem; letter-spacing:0.05em;" aria-label="Reset zoom">RESET</button>
+        <button id="cal-zoom-in" aria-label="Zoom in">&#43;</button>
+      </div>
+      
+      <div class="cal-img-wrap">
+        <img id="cal-img" 
+             class="cal-img"
+             src="https://res.cloudinary.com/j38l39ro/image/upload/f_auto,q_auto,w_1200/2027LiveMusic.jpg" 
+             onerror="this.onerror=null; this.src='2027LiveMusic.jpg';"
+             alt="The Bird Restaurant presents Backyard Live Music Bash 2027 Tribute Lineup"
+             loading="lazy"
+             width="1024"
+             height="684">
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTO LIGHTBOX MODAL (With 50+ Accessible Controls) -->
+  <div id="photo-lightbox" class="photo-lightbox" role="dialog" aria-modal="true" aria-label="Concert photo preview">
+    <!-- Big 52px Close Button -->
+    <button id="photo-lb-close" class="photo-lb-close" aria-label="Close photo preview">&times;</button>
+    
+    <!-- Big 58px Prev / Next Navigation Arrows -->
+    <button id="photo-lb-prev" class="photo-lb-nav-btn prev" aria-label="Previous photo">&#8249;</button>
+    <button id="photo-lb-next" class="photo-lb-nav-btn next" aria-label="Next photo">&#8250;</button>
+
+    <div class="photo-lb-content">
+      <img id="photo-lb-img" class="photo-lb-img" src="" alt="">
+      <div class="photo-lb-footer">
+        <span id="photo-lb-counter" class="photo-lb-counter">1 of 4</span>
+        <p id="photo-lb-caption" class="photo-lb-caption"></p>
+      </div>
     </div>
   </div>
 </main>
 
-<!-- CALENDAR MODAL WITH ZOOM & RESET -->
-<div id="calendar-modal" class="cal-modal" role="dialog" aria-modal="true" aria-label="2027 Tribute Lineup Live Music Calendar">
-  <div class="cal-modal-content">
-    <button id="close-calendar" class="cal-close-btn" aria-label="Close calendar">&times;</button>
-    
-    <div class="cal-controls">
-      <button id="cal-zoom-out" aria-label="Zoom out">&#8722;</button>
-      <button id="cal-zoom-reset" style="font-size:0.85rem; letter-spacing:0.05em;" aria-label="Reset zoom">RESET</button>
-      <button id="cal-zoom-in" aria-label="Zoom in">&#43;</button>
-    </div>
-    
-    <div class="cal-img-wrap">
-      <img id="cal-img" 
-           class="cal-img"
-           src="https://res.cloudinary.com/j38l39ro/image/upload/f_auto,q_auto,w_1200/2027LiveMusic.jpg" 
-           onerror="this.onerror=null; this.src='2027LiveMusic.jpg';"
-           alt="The Bird Restaurant presents Backyard Live Music Bash 2027 Tribute Lineup"
-           loading="lazy"
-           width="1024"
-           height="684">
-    </div>
-  </div>
-</div>
-
-<!-- ACCESSIBLE MASTER FOOTER (Optimized for 55+) -->
-<!-- Subtle Gold Line Divider -->
-<div style="position: relative; width: 100%; height: 1px; background: #1B1812;">
-  <div style="position: absolute; inset: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(185, 154, 79, 0.5), transparent);"></div>
-</div>
+<!-- ACCESSIBLE MASTER FOOTER -->
 <footer class="site-footer" style="background: #1B1812; border-top: none; position: relative; color: #C7C0AF; padding: 2.5rem 0 1.5rem 0; width: 100%; box-sizing: border-box; text-align: left;">
-  <div style="position: absolute; top: 0; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(185, 154, 79, 0.5), transparent);"></div>
+  <div class="footer-divider"></div>
   <div class="wrap" style="max-width: 1180px; margin: 0 auto; padding: 0 4vw;">
-    
-    <div style="display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 2.5rem; padding-bottom: 2.2rem; border-bottom: 1px solid rgba(243,239,231,0.12);">
-      
+    <div class="footer-grid">
       <!-- Column 1 -->
       <div>
-        <!-- ADDED LINK TO INDEX.HTML HERE -->
         <a href="index.html" style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; text-decoration: none;">
-          <!-- LOGO FIX -->
-          <img loading="lazy" src="Bird_Logo_clknrs.png" alt="The Bird Logo" style="height: 38px; width: auto; border-radius: 50%;">
+          <img loading="lazy" src="Bird_Logo_clknrs.png" alt="The Bird Logo" width="38" height="38" style="height: 38px; width: auto; border-radius: 50%;">
           <span style="font-family: var(--display); font-weight: 700; font-size: 1.25rem; color: #F3EFE7;">The Bird</span>
         </a>
-        
-        <!-- TYPOGRAPHY FIX: Split into two distinct blocks so it doesn't look like a run-on sentence -->
-        <div style="margin-bottom: 0.6rem; font-size: 1.05rem; font-weight: 600; color: #C7C0AF;">
-          Great Food · Full Bar · Live Entertainment
+        <div style="margin-bottom: 0.6rem; font-size: 1.05rem; font-weight: 600; color: #C7C0AF; line-height: 1.4;">
+          Great Food · Full Bar<br>Live Entertainment
         </div>
         <p style="font-size: 0.95rem; color: #A8A090; line-height: 1.6; max-width: 280px; margin: 0;">
           Where Sonoma County comes together to eat, drink, and enjoy great music.
@@ -394,15 +885,12 @@
       <!-- Column 4 -->
       <div>
         <h4 style="font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--gold); margin-bottom: 1.1rem; letter-spacing: 0.03em;">Follow Us</h4>
-        
         <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
           <a href="https://www.instagram.com/thebirdrestaurant707/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(243,239,231,0.25); color: #F3EFE7; text-decoration: none;">
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
           </a>
           <a href="https://www.instagram.com/thebirdrestaurant707/" target="_blank" rel="noopener noreferrer" style="color: #C7C0AF; text-decoration: none; font-size: 1rem;">Instagram</a>
         </div>
-        
-        <!-- RESTORED FACEBOOK LINK -->
         <div style="display: flex; align-items: center; gap: 0.8rem;">
           <a href="https://www.facebook.com/thebird707" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(243,239,231,0.25); color: #F3EFE7; text-decoration: none;">
             <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
@@ -410,26 +898,21 @@
           <a href="https://www.facebook.com/thebird707" target="_blank" rel="noopener noreferrer" style="color: #C7C0AF; text-decoration: none; font-size: 1rem;">Facebook</a>
         </div>
       </div>
-
     </div>
 
-    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.8rem; padding: 1.4rem 0 1.0rem 0; font-size: 0.85rem; color: #7A7265;">
+    <div class="footer-bottom-flex">
       <span>&copy; 2026 The Bird Restaurant. All rights reserved.</span>
       <span>Santa Rosa, California · Since 1980</span>
     </div>
 
-    <!-- Below the Fold Credit Link -->
-    <a href="https://castroascend.netlify.app/" target="_blank" rel="noopener noreferrer" style="color: #9A9285; font-size: 0.68rem; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem;">
+    <div style="text-align: center; margin-top: 1.5rem; padding-bottom: 0.5rem;">
+      <a href="https://castroascend.netlify.app/" target="_blank" rel="noopener noreferrer" style="color: #9A9285; font-size: 0.68rem; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem;">
         Designed by AC
-       <div style="text-align: center; margin-top: 1.5rem; padding-bottom: 0.5rem;">
-  <a href="https://castroascend.netlify.app/" target="_blank" rel="noopener noreferrer" style="color: #9A9285; font-size: 0.68rem; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem;">
-    Designed by AC
-    <span style="display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; background: #DCDCDC; border-radius: 3px; margin-left: 0.1rem;">
-      <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#3B62A0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
-    </span>
-  </a>
-</div>
-
+        <span style="display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; background: #DCDCDC; border-radius: 3px; margin-left: 0.1rem;">
+          <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#3B62A0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+        </span>
+      </a>
+    </div>
   </div>
 </footer>
 
@@ -456,6 +939,17 @@
       text.textContent = 'Closed Now';
     }
   })();
+
+  // Mobile Menu Toggle
+  document.addEventListener("DOMContentLoaded", function() {
+    const toggleBtn = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (toggleBtn && mobileMenu) {
+      toggleBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('active');
+      });
+    }
+  });
 
   // Calendar Modal & Zoom Logic
   (function() {
@@ -490,21 +984,124 @@
       resetZoom();
     }
 
-    openBtn.addEventListener('click', openModal);
-    closeBtn.addEventListener('click', closeModal);
+    if (openBtn) openBtn.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
 
-    zoomIn.addEventListener('click', () => applyZoom(currentZoom + 0.25));
-    zoomOut.addEventListener('click', () => applyZoom(currentZoom - 0.25));
-    zoomReset.addEventListener('click', resetZoom);
+    if (zoomIn) zoomIn.addEventListener('click', () => applyZoom(currentZoom + 0.25));
+    if (zoomOut) zoomOut.addEventListener('click', () => applyZoom(currentZoom - 0.25));
+    if (zoomReset) zoomReset.addEventListener('click', resetZoom);
 
-    modal.addEventListener('click', (e) => {
-      if (e.target === modal) closeModal();
-    });
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+      });
+    }
 
     document.addEventListener('keydown', (e) => {
-      if (modal.style.display === 'flex' && e.key === 'Escape') {
+      if (modal && modal.style.display === 'flex' && e.key === 'Escape') {
         closeModal();
       }
+    });
+  })();
+
+  // Atmosphere Strip Lightbox Logic (50+ Senior & Tablet Optimized)
+  (function() {
+    const photoItems = Array.from(document.querySelectorAll('.live-photo-item'));
+    const photoModal = document.getElementById('photo-lightbox');
+    const photoImg = document.getElementById('photo-lb-img');
+    const photoCaption = document.getElementById('photo-lb-caption');
+    const photoCounter = document.getElementById('photo-lb-counter');
+    const photoCloseBtn = document.getElementById('photo-lb-close');
+    const prevBtn = document.getElementById('photo-lb-prev');
+    const nextBtn = document.getElementById('photo-lb-next');
+
+    let currentIndex = 0;
+
+    function renderPhoto(index) {
+      currentIndex = (index + photoItems.length) % photoItems.length;
+      const item = photoItems[currentIndex];
+      const src = item.getAttribute('data-full');
+      const caption = item.getAttribute('data-caption');
+      
+      photoImg.src = src;
+      photoCaption.textContent = caption;
+      if (photoCounter) {
+        photoCounter.textContent = `${currentIndex + 1} of ${photoItems.length}`;
+      }
+    }
+
+    function openPhoto(index) {
+      renderPhoto(index);
+      photoModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePhoto() {
+      photoModal.classList.remove('open');
+      document.body.style.overflow = '';
+      photoImg.src = '';
+    }
+
+    function showNext() {
+      renderPhoto(currentIndex + 1);
+    }
+
+    function showPrev() {
+      renderPhoto(currentIndex - 1);
+    }
+
+    photoItems.forEach((item, idx) => {
+      item.addEventListener('click', () => openPhoto(idx));
+      item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openPhoto(idx);
+        }
+      });
+    });
+
+    if (photoCloseBtn) photoCloseBtn.addEventListener('click', closePhoto);
+    if (nextBtn) nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showNext();
+    });
+    if (prevBtn) prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      showPrev();
+    });
+
+    if (photoModal) {
+      photoModal.addEventListener('click', (e) => {
+        if (e.target === photoModal) closePhoto();
+      });
+    }
+
+    // Touch Swipe gesture support for iPads & mobile viewports
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    photoModal.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    photoModal.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const swipeDistance = touchEndX - touchStartX;
+      if (Math.abs(swipeDistance) > 40) {
+        if (swipeDistance < 0) {
+          showNext();
+        } else {
+          showPrev();
+        }
+      }
+    }, { passive: true });
+
+    // Keyboard support: Left / Right arrows and Escape key
+    document.addEventListener('keydown', (e) => {
+      if (!photoModal || !photoModal.classList.contains('open')) return;
+      if (e.key === 'Escape') closePhoto();
+      if (e.key === 'ArrowRight') showNext();
+      if (e.key === 'ArrowLeft') showPrev();
     });
   })();
 </script>
