@@ -574,11 +574,11 @@
           <div class="form-row">
             <div class="form-field">
               <label for="fname">First Name *</label>
-              <input id="fname" name="fname" type="text" required autocomplete="given-name">
+              <input id="fname" name="first-name" type="text" required autocomplete="given-name">
             </div>
             <div class="form-field">
               <label for="lname">Last Name *</label>
-              <input id="lname" name="lname" type="text" required autocomplete="family-name">
+              <input id="lname" name="last-name" type="text" required autocomplete="family-name">
             </div>
           </div>
           
@@ -589,18 +589,18 @@
             </div>
             <div class="form-field">
               <label for="phone-input">Phone *</label>
-              <input type="tel" id="phone-input" name="phone" required maxlength="14" autocomplete="tel">
+              <input id="phone-input" name="phone" required maxlength="14" autocomplete="tel">
             </div>
           </div>
           
           <div class="form-row">
             <div class="form-field">
               <label for="edate">Event Date *</label>
-              <input id="edate" name="edate" type="date" required>
+              <input id="edate" name="event-date" type="date" required>
             </div>
             <div class="form-field">
               <label for="guests">Number of Guests *</label>
-              <input id="guests" name="guests" type="number" min="1" required placeholder="e.g. 35">
+              <input id="guests" name="party-size" type="number" min="1" required placeholder="e.g. 35">
             </div>
           </div>
           
@@ -618,7 +618,7 @@
           <!-- Optional Additional Information Box -->
           <div class="form-field full">
             <label for="info">Additional Information (Optional)</label>
-            <textarea id="info" name="info" rows="3" placeholder="Tell us about food preferences, timing, or any special requests…"></textarea>
+            <textarea id="info" name="additional-info" rows="3" placeholder="Tell us about food preferences, timing, or any special requests…"></textarea>
           </div>
           
           <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">
@@ -796,7 +796,7 @@
 
         const formData = new FormData(form);
         
-        fetch('/catering.html', {
+        fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(formData).toString()

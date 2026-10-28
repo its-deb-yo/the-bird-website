@@ -42,7 +42,7 @@
 
   .wrap { max-width: 1180px; margin: 0 auto; padding: 0 5vw; }
 
-  /* Nav Links Styling & Gold Underline Effect (Forced Black Text) */
+  /* Nav Links Styling & Gold Underline Effect */
   .nav-links { 
     display: flex; 
     align-items: center; 
@@ -90,8 +90,8 @@
     font-weight: 600;
     letter-spacing: 0.03em; 
     border-radius: 4px; 
-    text-decoration: none;
-    box-sizing: border-box;
+    text-decoration: none; 
+    box-sizing: border-box; 
     transition: transform 0.18s, background 0.18s, color 0.18s, border-color 0.18s;
   }
   .btn-gold { background: var(--gold); color: var(--ink); }
@@ -99,13 +99,13 @@
   .btn-outline { border: 1.5px solid rgba(243,239,231,0.5); color: var(--paper); }
   .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
 
-  /* ---------- Page Content Styles ---------- */
+  /* Page Content Styles */
   .holiday-band { background: var(--ink); color: var(--paper); padding: 4rem 0; }
   .holiday-band .eyebrow { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
   .holiday-band h1 { font-family: var(--display); font-weight: 700; font-size: clamp(2.2rem, 5vw, 3.2rem); color: var(--paper); margin-bottom: 1.1rem; line-height: 1.15; }
   .holiday-band p { font-size: 1.12rem; color: #CFC8B9; line-height: 1.75; max-width: 860px; margin: 0 auto; text-align: center; }
 
-  /* New Native Form Styles based on Catering Form Reference */
+  /* Native Form Styles */
   .order-section { padding: 4rem 0 6rem; }
   .reservation-grid { 
     display: grid; 
@@ -134,13 +134,13 @@
     border-radius: 3px; 
     font-family: inherit; 
     font-size: 1rem; 
-    background: #ffffff;
-    color: var(--ink);
-    transition: border-color 0.2s;
+    background: #ffffff; 
+    color: var(--ink); 
+    transition: border-color 0.2s; 
   }
-  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
-    outline: none;
-    border-color: var(--wine);
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { 
+    outline: none; 
+    border-color: var(--wine); 
   }
 
   .disclaimer-banner { 
@@ -151,8 +151,8 @@
     font-size: 0.92rem; 
     font-weight: 600; 
     margin-bottom: 2rem; 
-    border-left: 4px solid var(--wine);
-    line-height: 1.5;
+    border-left: 4px solid var(--wine); 
+    line-height: 1.5; 
   }
   
   .conditional-policy { 
@@ -161,7 +161,7 @@
     border-left: 3px solid var(--gold); 
     margin-bottom: 1.5rem; 
     display: none; 
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 4px 4px 0; 
   }
   .conditional-policy.active { display: block; animation: fadeIn 0.3s ease-in-out; }
   
@@ -178,12 +178,12 @@
     border: none; 
     padding: 1.1rem; 
     font-size: 1.05rem; 
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background 0.2s, transform 0.2s;
-    font-family: inherit;
-    margin-top: 0.5rem;
+    font-weight: 600; 
+    cursor: pointer; 
+    border-radius: 4px; 
+    transition: background 0.2s, transform 0.2s; 
+    font-family: inherit; 
+    margin-top: 0.5rem; 
   }
   .btn-submit:hover { background: var(--wine-light); transform: translateY(-2px); }
 
@@ -194,14 +194,14 @@
     padding: 5rem 2rem; 
     background: var(--paper-2); 
     border-radius: 8px; 
-    max-width: 700px;
-    margin: 0 auto;
+    max-width: 700px; 
+    margin: 0 auto; 
   }
   #capacity-full-msg h2 { font-family: var(--display); color: var(--wine); font-size: 2.5rem; margin-bottom: 1rem; }
   #capacity-full-msg p { font-size: 1.15rem; color: var(--ink-soft); line-height: 1.7; }
   #success-msg { display: none; }
 
-  /* ---------- Footer Base Classes ---------- */
+  /* Footer Base Classes */
   .footer-divider {
     position: absolute; 
     top: 0; 
@@ -228,7 +228,7 @@
     color: #7A7265;
   }
 
-  /* ---------- Mobile Header & Menu ---------- */
+  /* Mobile Header & Menu */
   .status-bar-inner {
     max-width: 1340px; margin: 0 auto; padding: 0.5rem 2rem; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box;
   }
@@ -248,14 +248,12 @@
     width: 100%; 
     padding: 1rem 2rem; 
     border-bottom: 1px solid rgba(27,24,18,0.08); 
-    box-shadow: 0 10px 10px rgba(0,0,0,0.05);
-    max-height: calc(100vh - 80px);
-    overflow-y: auto;
-    z-index: 1001;
+    box-shadow: 0 10px 10px rgba(0,0,0,0.05); 
+    max-height: calc(100vh - 80px); 
+    overflow-y: auto; 
+    z-index: 1001; 
   }
-  .mobile-menu.active {
-    display: flex;
-  }
+  .mobile-menu.active { display: flex; }
   .mobile-menu a {
     padding: 0.75rem 0; font-weight: 500; border-bottom: 1px solid rgba(27,24,18,0.05); color: var(--ink); text-decoration: none;
   }
@@ -265,23 +263,13 @@
 
   @media (max-width: 920px) { 
     .reservation-grid { grid-template-columns: 1fr; gap: 3rem; } 
-    /* Status Bar Mobile Fix */
-    .order-section {
-      padding-bottom: 2rem;
-    }
+    .order-section { padding-bottom: 2rem; }
     .status-bar-inner {
       flex-direction: column; gap: 0.4rem; text-align: left; align-items: flex-start; padding: 0.85rem 5vw; line-height: 1.4;
     }
-    .nav-links, .header-order-btn {
-      display: none !important;
-    }
-    .hamburger {
-      display: block;
-    }
-    .site-header-inner {
-      padding: 1rem;
-    }
-    /* Footer Mobile Fix */
+    .nav-links, .header-order-btn { display: none !important; }
+    .hamburger { display: block; }
+    .site-header-inner { padding: 1rem; }
     .site-footer {
       padding-top: 3.25rem !important;
       padding-bottom: 1.25rem !important;
@@ -298,24 +286,16 @@
       gap: 1.75rem 1.25rem;
       padding-bottom: 1.5rem;
     }
-    .footer-col-brand {
-      grid-area: brand;
-    }
-    .footer-col-visit {
-      grid-area: visit;
-    }
-    .footer-col-explore {
-      grid-area: explore;
-    }
-    .footer-col-social {
-      grid-area: social;
-    }
+    .footer-col-brand { grid-area: brand; }
+    .footer-col-visit { grid-area: visit; }
+    .footer-col-explore { grid-area: explore; }
+    .footer-col-social { grid-area: social; }
     .footer-bottom-flex {
       flex-direction: column; 
       justify-content: center; 
-      text-align: center;
-      gap: 0.4rem;
-      padding: 1rem 0 0.5rem 0;
+      text-align: center; 
+      gap: 0.4rem; 
+      padding: 1rem 0 0.5rem 0; 
     }
     .footer-credit {
       margin-top: 0.75rem !important;
@@ -350,7 +330,7 @@
 <header class="site-header" style="position: sticky; top: 0; z-index: 1000; background-color: #F3EFE7; border-bottom: 1px solid rgba(27,24,18,0.08); box-shadow: 0 2px 10px rgba(0,0,0,0.03); width: 100%;">
   <div class="site-header-inner">
     <a href="index.html" style="display: flex; align-items: center; gap: 0.75rem; text-decoration: none; flex-shrink: 0;">
-     <img src="Bird_Logo_clknrs.png" alt="The Bird Logo" width="38" height="38" style="height: 38px; width: auto; border-radius: 50%;">
+      <img src="Bird_Logo_clknrs.png" alt="The Bird Logo" width="38" height="38" style="height: 38px; width: auto; border-radius: 50%;">
       <span style="font-family: var(--display); font-weight: 700; font-size: 1.25rem; color: #1B1812; letter-spacing: -0.01em;">The Bird</span>
     </a>
     <nav class="nav-links" style="margin-left: 2.5rem; margin-right: 2rem;">
@@ -403,7 +383,7 @@
   </div>
 </section>
 
-<!-- NEW NATIVE FORM SECTION -->
+<!-- NATIVE FORM SECTION -->
 <section class="order-section">
   <div class="wrap">
     
@@ -413,7 +393,7 @@
       <p>We have reached our maximum capacity for online Thanksgiving reservation requests. Please call us directly at <strong>(707) 542-0861</strong> to check for last-minute availability or cancellations.</p>
     </div>
 
-   <!-- SUCCESS MESSAGE (Shown upon submission) -->
+    <!-- SUCCESS MESSAGE (Shown upon submission) -->
     <div id="success-msg" style="max-width: 560px; padding: 3.5rem 2rem; background: var(--paper-2); border-radius: 8px; margin: 0 auto; text-align: center;">
       <div style="display: flex; justify-content: center; margin-bottom: 1.5rem;">
         <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(110,42,56,0.1); border: 2px solid var(--wine); display: flex; align-items: center; justify-content: center; color: var(--wine);">
@@ -451,7 +431,6 @@
 
       <!-- Right Column: The Form -->
       <div class="form-container">
-        <!-- Added Netlify attributes and removed inline JS for a cleaner AJAX submission -->
         <form id="thanksgiving-form" method="POST" name="thanksgiving-reservations" data-netlify="true">
           <input type="hidden" name="form-name" value="thanksgiving-reservations">
           
@@ -462,7 +441,6 @@
           <div class="form-row">
             <div class="form-group row-item">
               <label>First Name *</label>
-              <!-- MUST add 'name' attribute for Netlify to see data -->
               <input type="text" name="first-name" required>
             </div>
             <div class="form-group row-item">
@@ -544,7 +522,7 @@
 </section>
 </main>
 
-<!-- ACCESSIBLE MASTER FOOTER (Optimized for 55+) -->
+<!-- ACCESSIBLE MASTER FOOTER -->
 <footer class="site-footer" style="background: #1B1812; border-top: none; position: relative; color: #C7C0AF; padding: 2.5rem 0 1.5rem 0; width: 100%; box-sizing: border-box; text-align: left;">
   <div class="footer-divider"></div>
   <div class="wrap" style="max-width: 1180px; margin: 0 auto; padding: 0 4vw;">
@@ -609,7 +587,6 @@
       <span>&copy; 2026 The Bird Restaurant. All rights reserved.</span>
       <span>Santa Rosa, California · Since 1980</span>
     </div>
-    <!-- Below the Fold Credit Link -->
     <div class="footer-credit" style="text-align: center; margin-top: 1.5rem; padding-bottom: 0.5rem;">
       <a href="https://castroascend.netlify.app/" target="_blank" rel="noopener noreferrer" style="color: #9A9285; font-size: 0.68rem; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem;">
         Designed by AC
@@ -627,11 +604,11 @@
     const dot = document.getElementById('status-dot');
     const text = document.getElementById('status-text');
     const now = new Date();
-    const day = now.getDay(); // 0 = Sunday
+    const day = now.getDay();
     const hour = now.getHours() + now.getMinutes() / 60;
     const hoursMap = {
-      0: [12, 19], // Sunday
-      1: null,     // Monday closed
+      0: [12, 19],
+      1: null,
       2: [12, 21], 3: [12, 21], 4: [12, 21], 5: [12, 21],
       6: [12, 21]
     };
@@ -644,23 +621,19 @@
       text.textContent = 'Closed Now';
     }
   })();
-</script>
 
-<script>
   // Mobile Menu Toggle
   document.addEventListener("DOMContentLoaded", function() {
     const toggleBtn = document.getElementById('mobile-menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     if (toggleBtn && mobileMenu) {
-        toggleBtn.addEventListener('click', function() {
-          mobileMenu.classList.toggle('active');
-        });
+      toggleBtn.addEventListener('click', function() {
+        mobileMenu.classList.toggle('active');
+      });
     }
   });
 
-  // --------------------------------------------------------
-  // THANKSGIVING RESERVATION FORM LOGIC
-  // --------------------------------------------------------
+  // Thanksgiving Reservation Form Logic
   document.addEventListener('DOMContentLoaded', () => {
     const daySelect = document.getElementById('pref-day');
     const timeSelect = document.getElementById('pref-time');
@@ -669,7 +642,6 @@
     const feeConsent = document.getElementById('fee-consent');
     const phoneConsent = document.getElementById('phone-consent');
     
-    // Holiday Hours Matrix updated for the whole week
     const times = {
       'Tuesday, Nov 24': ['4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM'],
       'Wednesday, Nov 25': ['4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM'],
@@ -678,7 +650,7 @@
       'Sunday, Nov 29': ['12:00 PM', '12:30 PM', '1:00 PM', '1:30 PM', '2:00 PM', '2:30 PM', '3:00 PM', '3:30 PM', '4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM']
     };
 
-    // Phone Number Formatting: Auto (555) 555-5555
+    // Auto-format phone: (555) 555-5555
     const phoneInput = document.getElementById('phone-input');
     if (phoneInput) {
       phoneInput.addEventListener('input', function (e) {
@@ -687,7 +659,7 @@
       });
     }
 
-    // 1. Dynamic Time Slot Population
+    // Dynamic Time Slot Population
     if (daySelect) {
       daySelect.addEventListener('change', (e) => {
         const day = e.target.value;
@@ -708,7 +680,7 @@
       });
     }
 
-    // 2. Large Party Conditional Logic & Required Checkboxes
+    // Large Party Conditional Policy
     if (partyInput) {
       partyInput.addEventListener('input', (e) => {
         const size = parseInt(e.target.value, 10);
@@ -726,7 +698,7 @@
       });
     }
     
-    // 3. Emergency Pivot Plan (Developer Toggle)
+    // Emergency Pivot Plan (Toggle if full)
     const IS_CAPACITY_FULL = false; 
     
     if (IS_CAPACITY_FULL) {
@@ -734,7 +706,7 @@
       document.getElementById('capacity-full-msg').style.display = 'block';
     }
 
-    // 4. Netlify Form AJAX Submission logic with Seamless Box Display
+    // Netlify AJAX Submission
     const resForm = document.getElementById('thanksgiving-form');
     if (resForm) {
       function showSuccess() {
@@ -753,7 +725,7 @@
 
         const formData = new FormData(resForm);
         
-        fetch('/thanksgiving-reservations.html', {
+        fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(formData).toString()
@@ -762,7 +734,6 @@
           showSuccess();
         })
         .catch(() => {
-          // If testing locally (file:// URL) or offline, display the exact same boxed UI instead of an alert popup
           showSuccess();
         });
       });
