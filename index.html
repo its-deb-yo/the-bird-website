@@ -97,7 +97,7 @@
   button.btn { border: none; outline: none; -webkit-appearance: none; appearance: none; cursor: pointer; font-family: inherit; font-size: inherit; line-height: 1; }
   .btn-primary { background: var(--wine); color: var(--paper); }
   .btn-primary:hover { background: var(--wine-light); transform: translateY(-2px); }
-  .btn-gold { background: var(--gold); color: var(--ink); }
+  .btn-gold { background: var(--gold); color: var(--ink); border: 1.5px solid transparent; }
   .btn-gold:hover { background: #cbae6c; transform: translateY(-2px); }
   .btn-outline { border: 1.5px solid rgba(243,239,231,0.5); color: var(--paper); }
   .btn-outline:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
@@ -131,6 +131,14 @@
   .hero-ctas {
     margin-top: 2.2rem; display: flex; gap: 1rem; flex-wrap: wrap;
     opacity: 0; animation: rise 0.9s ease-out 0.5s forwards;
+  }
+  .hero-ctas .btn {
+    height: 50px;
+    min-width: 165px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
   }
   @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
