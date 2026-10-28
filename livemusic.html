@@ -638,7 +638,8 @@
     }
     /* Footer Mobile Fix */
     .site-footer {
-      padding-top: 4rem !important;
+      padding-top: 3.25rem !important;
+      padding-bottom: 1.25rem !important;
     }
     .footer-divider {
       top: 1.5rem;
@@ -647,13 +648,36 @@
       background: linear-gradient(90deg, transparent, rgba(185, 154, 79, 0.8), transparent);
     }
     .footer-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
+      grid-template-columns: 1fr 1fr;
+      grid-template-areas:
+        "brand brand"
+        "visit explore"
+        "social explore";
+      gap: 1.75rem 1.25rem;
+      padding-bottom: 1.5rem;
+    }
+    .footer-col-brand {
+      grid-area: brand;
+    }
+    .footer-col-visit {
+      grid-area: visit;
+    }
+    .footer-col-explore {
+      grid-area: explore;
+    }
+    .footer-col-social {
+      grid-area: social;
     }
     .footer-bottom-flex {
       flex-direction: column;
       justify-content: center;
       text-align: center;
+      gap: 0.4rem;
+      padding: 1rem 0 0.5rem 0;
+    }
+    .footer-credit {
+      margin-top: 0.75rem !important;
+      padding-bottom: 0.25rem !important;
     }
   }
 </style>
@@ -845,8 +869,8 @@
   <div class="footer-divider"></div>
   <div class="wrap" style="max-width: 1180px; margin: 0 auto; padding: 0 4vw;">
     <div class="footer-grid">
-      <!-- Column 1 -->
-      <div>
+      <!-- Column 1: Brand Info -->
+      <div class="footer-col-brand">
         <a href="index.html" style="display: flex; align-items: center; gap: 0.6rem; margin-bottom: 1rem; text-decoration: none;">
           <img loading="lazy" src="Bird_Logo_clknrs.png" alt="The Bird Logo" width="38" height="38" style="height: 38px; width: auto; border-radius: 50%;">
           <span style="font-family: var(--display); font-weight: 700; font-size: 1.25rem; color: #F3EFE7;">The Bird</span>
@@ -859,8 +883,8 @@
         </p>
       </div>
 
-      <!-- Column 2 -->
-      <div>
+      <!-- Column 2: Explore Links -->
+      <div class="footer-col-explore">
         <h4 style="font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--gold); margin-bottom: 1.1rem; letter-spacing: 0.03em;">Explore</h4>
         <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.85rem; font-size: 1rem;">
           <li><a href="menu.html" style="color: #C7C0AF; text-decoration: none;">Menu</a></li>
@@ -872,8 +896,8 @@
         </ul>
       </div>
 
-      <!-- Column 3 -->
-      <div>
+      <!-- Column 3: Visit Info -->
+      <div class="footer-col-visit">
         <h4 style="font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--gold); margin-bottom: 1.1rem; letter-spacing: 0.03em;">Visit</h4>
         <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 1rem; color: #C7C0AF;">
           <a href="https://www.google.com/maps/search/?api=1&query=4776+Sonoma+Hwy,+Santa+Rosa,+CA+95409" target="_blank" rel="noopener" style="color: #C7C0AF; text-decoration: none;">4776 Sonoma Hwy</a>
@@ -882,8 +906,8 @@
         </div>
       </div>
 
-      <!-- Column 4 -->
-      <div>
+      <!-- Column 4: Follow Us -->
+      <div class="footer-col-social">
         <h4 style="font-family: var(--display); font-size: 1.1rem; font-weight: 600; color: var(--gold); margin-bottom: 1.1rem; letter-spacing: 0.03em;">Follow Us</h4>
         <div style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1rem;">
           <a href="https://www.instagram.com/thebirdrestaurant707/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(243,239,231,0.25); color: #F3EFE7; text-decoration: none;">
@@ -905,7 +929,8 @@
       <span>Santa Rosa, California · Since 1980</span>
     </div>
 
-    <div style="text-align: center; margin-top: 1.5rem; padding-bottom: 0.5rem;">
+    <!-- Below the Fold Credit Link -->
+    <div class="footer-credit" style="text-align: center; margin-top: 1.5rem; padding-bottom: 0.5rem;">
       <a href="https://castroascend.netlify.app/" target="_blank" rel="noopener noreferrer" style="color: #9A9285; font-size: 0.68rem; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 0.25rem;">
         Designed by AC
         <span style="display: inline-flex; align-items: center; justify-content: center; width: 14px; height: 14px; background: #DCDCDC; border-radius: 3px; margin-left: 0.1rem;">
