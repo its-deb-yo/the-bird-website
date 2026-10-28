@@ -440,22 +440,22 @@
         <figcaption>Our Bar &amp; Dining Room</figcaption>
        </figure>
 
-       <figure data-full="live_music.jpg" data-caption="Live music on warm summer nights. Join us every weekend during the summer season for incredible local bands, outdoor dining, and dancing by the stage." data-zoom="0.75">
+       <figure data-full="live_music.jpg" data-caption="Live music on warm summer nights. Join us every weekend during the summer season for incredible local bands, outdoor dining, and dancing by the stage.">
         <img loading="lazy" src="live_music.jpg" alt="Live Music">
         <figcaption>Summer Concerts</figcaption>
        </figure>
 
-       <figure class="tall" data-full="bocce_garden.jpg" data-caption="Grab a drink on the patio, stroll past our vegetable garden, and line up your next shot on our scenic Sonoma County bocce ball courts." data-zoom="0.5">
+       <figure class="tall" data-full="bocce_garden.jpg" data-caption="Grab a drink on the patio, stroll past our vegetable garden, and line up your next shot on our scenic Sonoma County bocce ball courts.">
         <img loading="lazy" src="bocce_garden.jpg" alt="Bocce Garden">
         <figcaption>Bocce in the Garden</figcaption>
        </figure>
 
-       <figure data-full="host_event.jpg" data-caption="Gather for the holidays in our spacious downstairs dining room, glowing with festive lights and a real, fresh-cut Christmas tree. The perfect setting for holiday parties and festive feasts." data-zoom="0.5">
+       <figure data-full="host_event.jpg" data-caption="Gather for the holidays in our spacious downstairs dining room, glowing with festive lights and a real, fresh-cut Christmas tree. The perfect setting for holiday parties and festive feasts.">
         <img loading="lazy" src="host_event.jpg" alt="Host Your Event">
         <figcaption>Holiday Celebrations</figcaption>
        </figure>
 
-       <figure class="tall" data-full="Pool_table_2.jpg" data-caption="Chalk up a cue and enjoy some friendly competition. Our downstairs room features premium pool tables with easy access to the bar, and a relaxed atmosphere to unwind with friends." data-zoom="0.75">
+       <figure class="tall" data-full="Pool_table_2.jpg" data-caption="Chalk up a cue and enjoy some friendly competition. Our downstairs room features premium pool tables with easy access to the bar, and a relaxed atmosphere to unwind with friends.">
         <img loading="lazy" src="Pool_table_2.jpg" alt="Pool tables at The Bird">
         <figcaption>The Pool Tables</figcaption>
        </figure>
@@ -475,7 +475,7 @@
         <button id="lb-zoom-in" aria-label="Zoom in">&#43;</button>
       </div>
       <div style="overflow:hidden; max-height:80vh; max-width:90vw; display:flex; justify-content:center; align-items:center;">
-        <img id="lightbox-img" src="" alt="" style="max-width:100%; max-height:100%; border-radius:4px; transform-origin:center; transition:transform 0.2s ease-out;">
+        <img id="lightbox-img" src="" alt="" style="max-width:100%; max-height:80vh; object-fit:contain; border-radius:4px; transform-origin:center;">
       </div>
       <p class="lightbox-caption" id="lightbox-caption"></p>
     </div>
@@ -573,23 +573,27 @@
   
   let currentIndex = 0;
   let zoomLevel = 1;
-  let baseZoom = 1;
   
   function openLightbox(index) {
     currentIndex = index;
     const fig = figures[currentIndex];
+    
+    // Reset zoom instantly without animated scaling jumps
+    lbImg.style.transition = 'none';
+    zoomLevel = 1;
+    lbImg.style.transform = 'scale(1)';
+    
     lbImg.src = fig.getAttribute('data-full');
     lbCaption.textContent = fig.getAttribute('data-caption');
     
-    // Read the custom zoom level from the HTML, default to 1 (100%) if none exists
-    baseZoom = parseFloat(fig.getAttribute('data-zoom')) || 1;
-    
     lightbox.classList.add('open');
-    resetZoom();
   }
   
   function closeLightbox() {
     lightbox.classList.remove('open');
+    lbImg.style.transition = 'none';
+    zoomLevel = 1;
+    lbImg.style.transform = 'scale(1)';
   }
   
   function showNext() {
@@ -602,15 +606,18 @@
     openLightbox(currentIndex);
   }
 
-  // Zoom Logic
+  // Zoom Logic: only animate when user explicitly clicks zoom controls
   function setZoom(level) {
-      // Lowered the minimum zoom bound to 0.25 to accommodate the new settings
-      zoomLevel = Math.max(0.25, Math.min(level, 3));
-      lbImg.style.transform = `scale(${zoomLevel})`;
+    zoomLevel = Math.max(0.5, Math.min(level, 3));
+    lbImg.style.transition = 'transform 0.2s ease-out';
+    lbImg.style.transform = `scale(${zoomLevel})`;
   }
   
-  // Now resets back to the image's specific base size instead of forcing 100%
-  function resetZoom() { setZoom(baseZoom); }
+  function resetZoom() {
+    zoomLevel = 1;
+    lbImg.style.transition = 'transform 0.2s ease-out';
+    lbImg.style.transform = 'scale(1)';
+  }
   
   document.getElementById('lb-zoom-in').addEventListener('click', () => setZoom(zoomLevel + 0.25));
   document.getElementById('lb-zoom-out').addEventListener('click', () => setZoom(zoomLevel - 0.25));
