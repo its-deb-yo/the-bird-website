@@ -722,7 +722,7 @@
 
         const formData = new FormData(resForm);
         
-        fetch('/', {
+        fetch('/thanksgiving-reservations.html', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(formData).toString()
