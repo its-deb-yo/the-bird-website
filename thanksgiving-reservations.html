@@ -278,18 +278,26 @@
       top: 1.5rem; left: 5%; right: 5%; background: linear-gradient(90deg, transparent, rgba(185, 154, 79, 0.8), transparent);
     }
     .footer-grid {
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas:
-        "brand brand"
-        "visit explore"
-        "social explore";
-      gap: 1.75rem 1.25rem;
-      padding-bottom: 1.5rem;
+      grid-template-columns: 1.15fr 1fr;
+      gap: 1.5rem 1.2rem;
+      align-items: start;
     }
-    .footer-col-brand { grid-area: brand; }
-    .footer-col-visit { grid-area: visit; }
-    .footer-col-explore { grid-area: explore; }
-    .footer-col-social { grid-area: social; }
+    .footer-col-brand {
+      grid-column: 1 / -1;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(243, 239, 231, 0.08);
+    }
+    .footer-col-explore {
+      grid-column: 1;
+      grid-row: span 2;
+    }
+    .footer-col-visit {
+      grid-column: 2;
+    }
+    .footer-col-social {
+      grid-column: 2;
+      margin-top: 0.5rem;
+    }
     .footer-bottom-flex {
       flex-direction: column; 
       justify-content: center; 
@@ -433,6 +441,9 @@
       <div class="form-container">
         <form id="thanksgiving-form" method="POST" name="thanksgiving-reservations" data-netlify="true">
           <input type="hidden" name="form-name" value="thanksgiving-reservations">
+          <!-- Dynamic hidden fields for Resend & Netlify notifications -->
+          <input type="hidden" id="cancellation-policy-note" name="cancellation-policy-note" value="">
+          <input type="hidden" id="cancellationPolicyNote" name="cancellationPolicyNote" value="">
           
           <div class="disclaimer-banner">
             <strong>Please Note:</strong> This is a reservation REQUEST only. Your booking is not finalized until you receive a direct confirmation from our team.
@@ -641,6 +652,8 @@
     const policyArea = document.getElementById('large-party-policy');
     const feeConsent = document.getElementById('fee-consent');
     const phoneConsent = document.getElementById('phone-consent');
+    const policyNote1 = document.getElementById('cancellation-policy-note');
+    const policyNote2 = document.getElementById('cancellationPolicyNote');
     
     const times = {
       'Tuesday, Nov 24': ['4:00 PM', '4:30 PM', '5:00 PM', '5:30 PM', '6:00 PM', '6:30 PM', '7:00 PM', '7:30 PM', '8:00 PM', '8:30 PM'],
@@ -680,7 +693,9 @@
       });
     }
 
-    // Large Party Conditional Policy
+    // Large Party Conditional Policy & Dynamic Cancellation Note Injection
+    const largePartyText = 'Cancellation Policy (Parties of 5+): For parties of 5 or more, a credit card is required at the time of reservation confirmation. A $15 per person cancellation fee will be charged if the reservation is canceled less than 48 hours in advance or in the event of a no-show.';
+
     if (partyInput) {
       partyInput.addEventListener('input', (e) => {
         const size = parseInt(e.target.value, 10);
@@ -688,12 +703,16 @@
           policyArea.classList.add('active');
           feeConsent.required = true;
           phoneConsent.required = true;
+          if (policyNote1) policyNote1.value = largePartyText;
+          if (policyNote2) policyNote2.value = largePartyText;
         } else {
           policyArea.classList.remove('active');
           feeConsent.required = false;
           phoneConsent.required = false;
           feeConsent.checked = false;
           phoneConsent.checked = false;
+          if (policyNote1) policyNote1.value = '';
+          if (policyNote2) policyNote2.value = '';
         }
       });
     }
