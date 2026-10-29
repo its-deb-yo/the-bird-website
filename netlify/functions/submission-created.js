@@ -73,7 +73,7 @@ exports.handler = async (event) => {
       },
       body: JSON.stringify({
         // For testing before domain DNS is configured, use: "The Bird <onboarding@resend.dev>"
-        from: "The Bird <onboarding@resend.dev>",
+        from: "The Bird <reservations@thebirdrestaurant.com>",,
         to: [customerEmail],
         subject: subject,
         html: fullHtml,
