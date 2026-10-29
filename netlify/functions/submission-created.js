@@ -71,9 +71,9 @@ exports.handler = async (event) => {
         "Authorization": `Bearer ${process.env.RESEND_API_KEY}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        // For testing before domain DNS is configured, use: "The Bird <onboarding@resend.dev>"
-        from: "The Bird <reservations@thebirdrestaurant.com>",,
+     body: JSON.stringify({
+        from: "The Bird <reservations@thebirdrestaurant.com>",
+        reply_to: "thebirdllc@gmail.com",
         to: [customerEmail],
         subject: subject,
         html: fullHtml,
