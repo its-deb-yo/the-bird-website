@@ -20,6 +20,10 @@ exports.handler = async (event) => {
     const typeOfEvent = data.type || "Not specified";
     const additionalInfo = data['additional-info'] || data.info || "None";
 
+    // Detect large parties (5 or more guests)
+    const cancellationNote = data['cancellation-policy-note'] || data.cancellationPolicyNote || "";
+    const isLargeParty = parseInt(guests, 10) >= 5 || Boolean(cancellationNote);
+
     let subject = "";
     let contentHtml = "";
 
@@ -41,6 +45,16 @@ exports.handler = async (event) => {
       // Thanksgiving Reservations
       subject = "Thanksgiving Reservation Request — The Bird";
       const timeSlotRow = timeSlot ? `<li><strong>Time Slot:</strong> ${timeSlot}</li>` : "";
+      
+      const policyHtml = isLargeParty ? `
+        <div style="margin-top: 20px; padding: 14px 16px; background-color: #F8F5EE; border-left: 4px solid #B99A4F; border-radius: 4px;">
+          <strong style="color: #6E2A38; font-size: 15px;">Large Party Policy (5+ Guests):</strong>
+          <p style="margin: 6px 0 0; font-size: 13px; line-height: 1.5; color: #4B453C;">
+            For parties of 5 or more, a credit card is required at the time of reservation confirmation. A <strong>$15 per person cancellation fee</strong> will be charged if the reservation is canceled less than 48 hours in advance or in the event of a no-show. Our team will contact you by phone for payment details.
+          </p>
+        </div>
+      ` : "";
+
       contentHtml = `
         <p>We have received your Thanksgiving reservation request for the following:</p>
         <ul style="line-height: 1.8;">
@@ -52,6 +66,7 @@ exports.handler = async (event) => {
           <li><strong>Number of Guests:</strong> ${guests}</li>
           <li><strong>Additional Notes:</strong> ${additionalInfo}</li>
         </ul>
+        ${policyHtml}
       `;
     }
 
@@ -71,7 +86,7 @@ exports.handler = async (event) => {
         "Authorization": `Bearer ${process.env.RESEND_API_KEY}`,
         "Content-Type": "application/json",
       },
-     body: JSON.stringify({
+      body: JSON.stringify({
         from: "The Bird <reservations@thebirdrestaurant.com>",
         reply_to: "thebirdllc@gmail.com",
         to: [customerEmail],
