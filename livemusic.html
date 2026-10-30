@@ -948,7 +948,7 @@
   (function() {
     const dot = document.getElementById('status-dot');
     const text = document.getElementById('status-text');
-    const now = new Date();
+    const now = new Date(new Date().toLocaleString("en-US", { timeZone: "America/Los_Angeles" }));
     const day = now.getDay(); // 0 = Sunday
     const hour = now.getHours() + now.getMinutes() / 60;
     const hoursMap = {
