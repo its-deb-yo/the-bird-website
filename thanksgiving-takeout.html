@@ -312,50 +312,38 @@
   </div>
 </section>
 
-<!-- JOTFORM EMBED SECTION -->
+<!-- THANKSGIVING TAKEOUT CLOSED NOTICE -->
 <section class="order-section" id="order-embed">
   <div class="wrap">
-    <div class="jotform-container">
-      <div class="embed-frame">
-        <iframe
-          id="JotFormIFrame-233464184393158"
-          title="The Bird: Thanksgiving Takeout"
-          onload="window.parent.scrollTo(0,0)"
-          allowtransparency="true"
-          allow="geolocation; microphone; camera; fullscreen; payment"
-          src="https://pci.jotform.com/form/233464184393158"
-          frameborder="0"
-          style="min-width:100%; max-width:100%; height:1400px; border:none;"
-          scrolling="no">
-        </iframe>
-        <script type="text/javascript">
-          var ifr = document.getElementById("JotFormIFrame-233464184393158");
-          if (ifr) {
-            var src = ifr.src;
-            var iframeParams = [];
-            if (window.addEventListener) {
-              window.addEventListener("message", handleIFrameMessage, false);
-            } else if (window.attachEvent) {
-              window.attachEvent("onmessage", handleIFrameMessage);
-            }
-            function handleIFrameMessage(e) {
-              if (typeof e.data === "object") { return; }
-              var args = e.data.split(":");
-              if (args.length > 2) { 
-                iframe = document.getElementById("JotFormIFrame-" + args[(args.length - 1)]); 
-              } else { 
-                iframe = document.getElementById("JotFormIFrame"); 
-              }
-              if (!iframe) { return; }
-              switch (args[0]) {
-                case "setHeight":
-                  iframe.style.height = args[1] + "px";
-                  break;
-              }
-            }
-          }
-        </script>
+    <div class="jotform-container" style="text-align: center; padding: 3.5rem 1.5rem; background: #ffffff; border-radius: 8px; border: 1px solid rgba(27,24,18,0.12); box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+      <div style="font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem;">
+        Order Update
       </div>
+      <h2 style="font-size: clamp(1.8rem, 4vw, 2.4rem); color: var(--ink); margin-bottom: 1.25rem; font-family: var(--display); font-weight: 700; line-height: 1.2;">
+        Thanksgiving Takeout Pre-Orders Are Closed
+      </h2>
+      
+      <p style="font-size: 1.15rem; line-height: 1.6; color: var(--ink-soft); max-width: 620px; margin: 0 auto 1.75rem;">
+        We have reached our holiday kitchen capacity and online pre-orders for Thanksgiving takeout are officially closed.
+      </p>
+
+      <!-- Walk-In Dine-In Callout -->
+      <div style="background-color: var(--paper); border: 2px solid var(--ink); border-radius: 6px; padding: 1.25rem 1.5rem; margin: 0 auto 2rem; max-width: 580px; text-align: center;">
+        <p style="font-size: 1.1rem; font-weight: 700; color: var(--ink); margin: 0 0 0.4rem; font-family: var(--display);">
+          🦃 Walk-Ins Welcome for Dine-In!
+        </p>
+        <p style="font-size: 0.98rem; color: var(--ink-soft); margin: 0; line-height: 1.5;">
+          We will have select dining room tables and bar seating available on Thanksgiving Day for walk-in guests on a first-come, first-served basis.
+        </p>
+      </div>
+      
+     <p style="font-size: 1.05rem; line-height: 1.5; color: var(--ink-soft); margin-bottom: 2rem; font-weight: 500;">
+        Wishing our Sonoma County neighbors a very Happy Thanksgiving from all of us at The Bird!
+      </p>
+      
+      <a href="index.html" class="btn btn-gold">
+        Return to Homepage
+      </a>
     </div>
   </div>
 </section>
